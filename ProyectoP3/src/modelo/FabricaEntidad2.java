@@ -10,18 +10,7 @@ package modelo;
  */
 public class FabricaEntidad2 implements FabricaEntidad{
     
-    /*
-    atributos de cliente
-     String whatsapp;
-    String ciudad;
-    String pais;
-    String correo;
-    String metodoPago;
-    String telefono;
     
-    atributos de proveedores
-    
-    */
 
     @Override
     public Entidad RegistroEntidad(
