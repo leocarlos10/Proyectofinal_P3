@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import modelo.Estructura_Datos.ListaClientes;
+
 /**
  *
  * @author jesuz319
@@ -23,6 +25,8 @@ public class FabricaEntidad2 implements FabricaEntidad{
             String metodoPago,
             String telefono){
       
+        ListaClientes listaC = new ListaClientes();
+        listaC.agregarCliente(new Cliente(nombre, direccion, whatsapp, ciudad, pais, correo, metodoPago, telefono));
     }
     
     @Override

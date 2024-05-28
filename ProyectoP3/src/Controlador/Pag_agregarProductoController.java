@@ -13,6 +13,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import modelo.FabricaEntidad_sistema;
+import modelo.FabricaEntidad_sistema2;
 
 /**
  * FXML Controller class
@@ -48,7 +50,21 @@ public class Pag_agregarProductoController implements Initializable {
     @FXML
     void event_guardar(ActionEvent event) {
         
+        FabricaEntidad_sistema fabrica = new FabricaEntidad_sistema2();
+        fabrica.RegistroProducto(
+                textnombre.getText(), 
+                "producto", 
+                textDescripcion.getText(), 
+                textColeccion.getText(), 
+                comboCategoria.getValue(), 
+                Integer.parseInt(textPrecio.getText()));
         
+        // limpiamos los campos
+        textnombre.setText("");
+        textDescripcion.setText("");
+        textColeccion.setText("");
+        comboCategoria.setValue(null);
+        textPrecio.setText("");
 
     }
     

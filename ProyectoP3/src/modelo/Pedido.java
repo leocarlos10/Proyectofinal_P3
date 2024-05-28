@@ -19,8 +19,7 @@ public class Pedido  {
     int C_unidades;
     LocalDate fecha;
 
-    public Pedido(String id, String nombre, int precio, String tipo_E_sistema, int C_unidades, LocalDate fecha) {
-        this.id = id;
+    public Pedido( String nombre, int precio, String tipo_E_sistema, int C_unidades, LocalDate fecha) {
         this.nombre = nombre;
         this.precio = precio;
         this.tipo_E_sistema = tipo_E_sistema;
