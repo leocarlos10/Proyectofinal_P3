@@ -6,30 +6,23 @@ package modelo.Estructura_Datos;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
-import modelo.Producto;
+import modelo.Proveedor;
 
 /**
  *
  * @author USUARIO
  */
-public class Lista_Productos {
+public class ListaProveedor {
     
-    List<Producto> lista = new ArrayList<>();
+     List<Proveedor> lista = new ArrayList<>();
     
-    public void agregarProducto(Producto pro){
-        
+    
+    public void agregarProveedor(Proveedor pro){
         lista.add(pro);
     }
     
-    public List<Producto> getLista(){
+    public List<Proveedor> getLista(){
         return lista;
-    }
-    
-    public void mostrarDatos(){
-        for(Producto i: lista){
-            JOptionPane.showMessageDialog(null, i.toString());
-        }
     }
     
 }

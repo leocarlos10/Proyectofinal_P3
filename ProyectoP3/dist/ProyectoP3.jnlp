@@ -8,7 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="ProyectoP3.jar" size="1035339" download="eager" />
+=======
+    <jar href="ProyectoP3.jar" size="1034960" download="eager" />
+>>>>>>> 638ab133a0788deb2e151ede95a3beb0fbf12832
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="modelo.ProyectoP3"  name="ProyectoP3" />
   <update check="always"/>

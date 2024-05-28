@@ -21,8 +21,7 @@ public class Cliente  {
     String metodoPago;
     String telefono;
 
-    public Cliente(String id, String nombre, String direccion, String whatsapp, String ciudad, String pais, String correo, String metodoPago, String telefono) {
-        this.id = id;
+    public Cliente( String nombre, String direccion, String whatsapp, String ciudad, String pais, String correo, String metodoPago, String telefono) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.whatsapp = whatsapp;
