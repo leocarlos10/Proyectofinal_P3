@@ -13,8 +13,7 @@ public class FabricaEntidad2 implements FabricaEntidad{
     
 
     @Override
-    public Entidad RegistroEntidad(
-            String nombre,
+    public void RegistroCliente(String nombre,
             String direccion,
             String tipo_entidad,
             String whatsapp,
@@ -22,13 +21,21 @@ public class FabricaEntidad2 implements FabricaEntidad{
             String pais,
             String correo,
             String metodoPago,
-            String telefono,
-            String documento,
-            String tipo_producto,
-            int precio
-            ) {
-        return null;
+            String telefono){
+      
     }
+    
+    @Override
+    public void RegsitroProveedor(
+            String nombre,
+            String direccion,
+            String tipo_entidad,
+            String documento,
+            String tipo_producto
+    ){
+        
+    }
+    
 
    
   

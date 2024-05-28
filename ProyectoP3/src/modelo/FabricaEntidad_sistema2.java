@@ -5,6 +5,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import modelo.Estructura_Datos.Lista_Productos;
 
 /**
  *
@@ -12,19 +13,32 @@ import java.time.LocalDate;
  */
 public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema{
 
-    @Override
-    public Entidad_sistema RegistroEntidad_sistema(
+   @Override
+   public void RegistroProducto(
             String nombre,
             String tipo_E_sistema,
             String descripcion,
             String coleccion,
             String categoria,
+            int precio){
+       
+       // instancio la clase lista para poder guardar cada producto en una lista
+       Lista_Productos listaP = new Lista_Productos();
+       //guardamos el producto en la lista
+       listaP.agregarProducto(new Producto( nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria));
+   }
+   
+   
+   @Override
+   public void RegistroPedido(
+            String nombre,
+            String tipo_E_sistema,
             int C_unidades,
             int precio,
-            LocalDate fecha) {
-        return null;
-    }
-
+            LocalDate fecha
+   ){
+   
+   }
    
   
 

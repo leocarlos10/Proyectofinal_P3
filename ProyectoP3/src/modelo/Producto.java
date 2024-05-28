@@ -8,18 +8,27 @@ package modelo;
  *
  * @author USUARIO
  */
-public class Producto extends Entidad_sistema {
-    
-    protected String descripcion;
-    protected String coleccion;
-    protected String categoria;
+public class Producto  {
+     
+    String id;
+    String nombre;
+    int precio;
+    String tipo_E_sistema;
+    String descripcion;
+    String coleccion;
+    String categoria;
 
-    public Producto(String descripcion, String coleccion, String categoria, String id, String nombre, int precio, String tipo_E_sistema) {
-        super(id, nombre, precio, tipo_E_sistema);
+    public Producto( String nombre, int precio, String tipo_E_sistema, String descripcion, String coleccion, String categoria) {
+        
+        this.nombre = nombre;
+        this.precio = precio;
+        this.tipo_E_sistema = tipo_E_sistema;
         this.descripcion = descripcion;
         this.coleccion = coleccion;
         this.categoria = categoria;
     }
+
+   
     
     
 

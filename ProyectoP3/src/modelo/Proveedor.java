@@ -8,17 +8,29 @@ package modelo;
  *
  * @author USUARIO
  */
-public class Proveedor extends Entidad {
+public class Proveedor  {
     
-    protected String documento;
-    protected String tipo_producto;
+    String id;
+    String nombre;
+    String direccion;
+    String tipo_entidad;
+    String documento;
+    String tipo_producto;
+    int precio_producto;
 
-    public Proveedor(String documento, String tipo_producto, String id, String nombre, String direccion, String tipo_entidad) {
-        super(id, nombre, direccion, tipo_entidad);
+    public Proveedor(String id, String nombre, String direccion, String tipo_entidad, String documento, String tipo_producto, int precio_producto) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.tipo_entidad = tipo_entidad;
         this.documento = documento;
         this.tipo_producto = tipo_producto;
-        
+        this.precio_producto = precio_producto;
     }
+
+   
+
+   
 
    
     

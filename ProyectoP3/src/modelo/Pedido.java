@@ -10,16 +10,27 @@ import java.time.LocalDate;
  *
  * @author USUARIO
  */
-public class Pedido extends Entidad_sistema {
-    
+public class Pedido  {
+     
+    String id;
+    String nombre;
+    int precio;
+    String tipo_E_sistema;
     int C_unidades;
     LocalDate fecha;
 
-    public Pedido(int C_unidades, LocalDate fecha, String id, String nombre, int precio, String tipo_E_sistema) {
-        super(id, nombre, precio, tipo_E_sistema);
+    public Pedido(String id, String nombre, int precio, String tipo_E_sistema, int C_unidades, LocalDate fecha) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.tipo_E_sistema = tipo_E_sistema;
         this.C_unidades = C_unidades;
         this.fecha = fecha;
     }
+    
+    
+
+   
 
   
 

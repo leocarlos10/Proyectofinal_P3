@@ -14,15 +14,23 @@ public interface FabricaEntidad_sistema {
     
     
     
-   Entidad_sistema RegistroEntidad_sistema(
+  
+   
+   void RegistroProducto(
             String nombre,
             String tipo_E_sistema,
             String descripcion,
             String coleccion,
             String categoria,
+            int precio);
+   
+   
+   void RegistroPedido(
+            String nombre,
+            String tipo_E_sistema,
             int C_unidades,
             int precio,
             LocalDate fecha
-           );
+   );
     
 }
