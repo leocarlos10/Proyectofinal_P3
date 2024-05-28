@@ -12,7 +12,7 @@ public class ConexionMySQL {
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String user = "root";
     private static final String paswword = "password";
-    private static final String url = "jdbc:mysql://localhost/DBlorica";
+    private static final String url = "jdbc:mysql://localhost/SGestion_I_P";
 
     public ConexionMySQL() {
 

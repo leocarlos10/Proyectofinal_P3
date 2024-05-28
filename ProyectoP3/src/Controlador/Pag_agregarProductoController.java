@@ -68,4 +68,14 @@ public class Pag_agregarProductoController implements Initializable {
 
     }
     
+    @FXML
+    void event_agregarInfoP(ActionEvent event) {
+
+    }
+
+    @FXML
+    void event_agregarfoto(ActionEvent event) {
+
+    }
+    
 }
