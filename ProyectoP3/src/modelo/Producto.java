@@ -12,16 +12,17 @@ public class Producto extends Entidad_sistema {
     
     protected String descripcion;
     protected String coleccion;
-    protected String precio;
     protected String categoria;
 
-    public Producto(String descripcion, String coleccion, String precio, String categoria, String id, String nombre, String tipo_E_sistema) {
-        super(id, nombre, tipo_E_sistema);
+    public Producto(String descripcion, String coleccion, String categoria, String id, String nombre, int precio, String tipo_E_sistema) {
+        super(id, nombre, precio, tipo_E_sistema);
         this.descripcion = descripcion;
         this.coleccion = coleccion;
-        this.precio = precio;
         this.categoria = categoria;
     }
+    
+    
+
     
     
     

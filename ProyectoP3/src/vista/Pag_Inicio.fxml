@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="886.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="Controlador.Pag_InicioController">
+<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.Pag_InicioController">
    <children>
       <BorderPane layoutX="-2.0" prefHeight="562.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -21,6 +22,8 @@
                         <Image url="@../imagenes/logo.jpg" />
                      </image>
                   </ImageView>
+                  <Button fx:id="btn_agregarproducto" layoutX="191.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_agregar_producto" prefHeight="25.0" prefWidth="112.0" styleClass="button_header" stylesheets="@style.css" text="Agregar Producto">
+                  </Button>
                </children>
             </Pane>
          </top>

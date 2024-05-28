@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/Producto.java</file>
             <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/Pedido.java</file>
             <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/FabricaEntidad_sistema.java</file>
@@ -15,6 +16,19 @@
             <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/Entidad.java</file>
             <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/ProyectoP3.java</file>
             <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/FabricaEntidad_sistema2.java</file>
+=======
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/Cliente.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/Pedido.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/Entidad_sistema.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/Producto.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/Entidad.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/FabricaEntidad_sistema.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/FabricaEntidad_sistema2.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/FabricaEntidad.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/FabricaEntidad2.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/Controlador/Pag_agregarProductoController.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/Proveedor.java</file>
+>>>>>>> f1f7970205be2220b2e58aa387765d354a8bd559
         </group>
     </open-files>
 </project-private>

@@ -12,11 +12,13 @@ public class Entidad_sistema {
     
     protected String id;
     protected String nombre;
+    protected int precio;
     protected String tipo_E_sistema;
 
-    public Entidad_sistema(String id, String nombre, String tipo_E_sistema) {
+    public Entidad_sistema(String id, String nombre, int precio, String tipo_E_sistema) {
         this.id = id;
         this.nombre = nombre;
+        this.precio = precio;
         this.tipo_E_sistema = tipo_E_sistema;
     }
 
@@ -36,6 +38,14 @@ public class Entidad_sistema {
         this.nombre = nombre;
     }
 
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
     public String getTipo_E_sistema() {
         return tipo_E_sistema;
     }
@@ -43,6 +53,8 @@ public class Entidad_sistema {
     public void setTipo_E_sistema(String tipo_E_sistema) {
         this.tipo_E_sistema = tipo_E_sistema;
     }
+
+    
     
     
     

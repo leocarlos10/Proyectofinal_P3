@@ -13,15 +13,15 @@ import java.time.LocalDate;
 public class Pedido extends Entidad_sistema {
     
     int C_unidades;
-    int precio;
     LocalDate fecha;
 
-    public Pedido(int C_unidades, int precio, LocalDate fecha, String id, String nombre, String tipo_E_sistema) {
-        super(id, nombre, tipo_E_sistema);
+    public Pedido(int C_unidades, LocalDate fecha, String id, String nombre, int precio, String tipo_E_sistema) {
+        super(id, nombre, precio, tipo_E_sistema);
         this.C_unidades = C_unidades;
-        this.precio = precio;
         this.fecha = fecha;
     }
+
+  
 
    
     

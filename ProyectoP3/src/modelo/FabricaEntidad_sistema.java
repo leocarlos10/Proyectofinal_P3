@@ -4,12 +4,25 @@
  */
 package modelo;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author USUARIO
  */
 public interface FabricaEntidad_sistema {
     
-   Entidad_sistema RegistroEntidad_sistema(String id, String nombre, String tipo_E_sistema);
+    
+    
+   Entidad_sistema RegistroEntidad_sistema(
+            String nombre,
+            String tipo_E_sistema,
+            String descripcion,
+            String coleccion,
+            String categoria,
+            int C_unidades,
+            int precio,
+            LocalDate fecha
+           );
     
 }

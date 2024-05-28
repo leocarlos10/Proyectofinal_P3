@@ -9,13 +9,36 @@ package modelo;
  * @author jesuz319
  */
 public class FabricaEntidad2 implements FabricaEntidad{
+    
+    /*
+    atributos de cliente
+     String whatsapp;
+    String ciudad;
+    String pais;
+    String correo;
+    String metodoPago;
+    String telefono;
+    
+    atributos de proveedores
+    
+    */
 
     @Override
-    public Entidad RegistroEntidad(String id, String nombre, String direccion, String tipo_entidad) {
+    public Entidad RegistroEntidad(
+            String nombre,
+            String direccion,
+            String tipo_entidad,
+            String whatsapp,
+            String ciudad,
+            String pais,
+            String correo,
+            String metodoPago,
+            String telefono,
+            String documento,
+            String tipo_producto,
+            int precio
+            ) {
         return null;
     }
 
-   
-  
-    
 }
