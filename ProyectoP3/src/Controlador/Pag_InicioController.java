@@ -37,11 +37,14 @@ public class Pag_InicioController implements Initializable {
     void event_agregar_producto(ActionEvent event) {
         
         try{
-        Parent root = FXMLLoader.load(getClass().getResource("/vista/Pag_agregarProducto.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/Pag_agregarProducto.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            Pag_agregarProductoController controller = loader.getController();
+            controller.setStage(stage);
+            stage.show();
         }catch(Exception e){
             
             System.out.println("Error en el cambio de ventana");
