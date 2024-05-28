@@ -1,0 +1,10 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+.button_header{
+        
+        -fx-background-color:  #FFB300;
+        -fx-cursor: HAND;
+    }

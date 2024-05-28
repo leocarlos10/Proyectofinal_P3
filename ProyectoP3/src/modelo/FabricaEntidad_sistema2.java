@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author jesuz319
@@ -11,7 +13,15 @@ package modelo;
 public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema{
 
     @Override
-    public Entidad_sistema RegistroEntidad_sistema(String id, String nombre, String tipo_E_sistema) {
+    public Entidad_sistema RegistroEntidad_sistema(
+            String nombre,
+            String tipo_E_sistema,
+            String descripcion,
+            String coleccion,
+            String categoria,
+            int C_unidades,
+            int precio,
+            LocalDate fecha) {
         return null;
     }
 

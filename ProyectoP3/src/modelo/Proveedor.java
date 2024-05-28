@@ -12,13 +12,12 @@ public class Proveedor extends Entidad {
     
     protected String documento;
     protected String tipo_producto;
-    protected int precio;
 
-    public Proveedor(String documento, String tipo_producto, int precio, String id, String nombre, String direccion, String tipo_entidad) {
+    public Proveedor(String documento, String tipo_producto, String id, String nombre, String direccion, String tipo_entidad) {
         super(id, nombre, direccion, tipo_entidad);
         this.documento = documento;
         this.tipo_producto = tipo_producto;
-        this.precio = precio;
+        
     }
 
    
