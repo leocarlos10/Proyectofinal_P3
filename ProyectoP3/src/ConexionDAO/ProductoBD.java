@@ -6,22 +6,27 @@ public class ProductoBD {
 
 /*
 
-Producto: 
-    String nombre,
-    String tipo_E_sistema,
-    String descripcion,
-    String coleccion,
-    String categoria,
-    int precio
+Cliente:
+    String id;
+    String nombre;
+    String direccion;
+    String tipo_entidad;
+    String whatsapp;
+    String ciudad;
+    String pais;
+    String correo;
+    String metodoPago;
+    String telefono;
 
 Pedido: 
-    String nombre,
-    String tipo_E_sistema,
-    int C_unidades,
-    int precio,
-    LocalDate fecha
+    String id;
+    String nombre;
+    int precio;
+    String tipo_E_sistema;
+    int C_unidades;
+    LocalDate fecha;
 
-Cliente:
+Proveedor 
     String id;
     String nombre;
     String direccion;
@@ -30,11 +35,13 @@ Cliente:
     String tipo_producto;
     int precio_producto;
 
-Proveedor 
-    String nombre,
-    String direccion,
-    String tipo_entidad,
-    String documento,
-    String tipo_producto
+Producto: 
+    String id;
+    String nombre;
+    int precio;
+    String tipo_E_sistema;
+    String descripcion;
+    String coleccion;
+    String categoria;
 
  */
