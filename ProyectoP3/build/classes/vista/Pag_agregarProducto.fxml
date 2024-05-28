@@ -51,7 +51,7 @@
          <center>
             <Pane fx:id="Pane" prefHeight="505.0" prefWidth="530.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutX="14.0" layoutY="8.0" prefHeight="349.0" prefWidth="286.0" spacing="10.0">
+                  <VBox layoutX="14.0" layoutY="8.0" prefHeight="372.0" prefWidth="286.0" spacing="10.0">
                      <children>
                         <Label prefHeight="17.0" prefWidth="68.0" text="Nombre" />
                         <TextField fx:id="textnombre" />
@@ -65,12 +65,14 @@
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin></ComboBox>
+                        <Button mnemonicParsing="false" onAction="#event_agregarfoto" prefHeight="25.0" prefWidth="117.0" text="agregar foto" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
                   </VBox>
-                  <Button layoutX="20.0" layoutY="366.0" mnemonicParsing="false" onAction="#event_guardar" prefHeight="25.0" prefWidth="66.0" text="Guardar" />
+                  <Button layoutX="14.0" layoutY="419.0" mnemonicParsing="false" onAction="#event_guardar" prefHeight="25.0" prefWidth="72.0" text="Guardar" />
+                  <Button layoutX="115.0" layoutY="419.0" mnemonicParsing="false" onAction="#event_agregarInfoP" prefHeight="25.0" prefWidth="208.0" text="agregar  información del proveedor" />
                </children>
             </Pane>
          </center>
