@@ -10,8 +10,9 @@ package modelo;
  */
 public interface FabricaEntidad {
     
-    Entidad RegistroEntidad(
-            String nombre,
+    
+    
+    void RegistroCliente(String nombre,
             String direccion,
             String tipo_entidad,
             String whatsapp,
@@ -19,9 +20,14 @@ public interface FabricaEntidad {
             String pais,
             String correo,
             String metodoPago,
-            String telefono,
+            String telefono);
+    
+    void RegsitroProveedor(
+            String nombre,
+            String direccion,
+            String tipo_entidad,
             String documento,
-            String tipo_producto,
-            int precio);
+            String tipo_producto
+    );
     
 }

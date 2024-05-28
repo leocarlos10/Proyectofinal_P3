@@ -8,8 +8,12 @@ package modelo;
  *
  * @author USUARIO
  */
-public class Cliente extends Entidad {
+public class Cliente  {
     
+    String id;
+    String nombre;
+    String direccion;
+    String tipo_entidad;
     String whatsapp;
     String ciudad;
     String pais;
@@ -17,8 +21,10 @@ public class Cliente extends Entidad {
     String metodoPago;
     String telefono;
 
-    public Cliente(String whatsapp, String ciudad, String pais, String correo, String metodoPago, String telefono, String id, String nombre, String direccion, String tipo_entidad) {
-        super(id, nombre, direccion, tipo_entidad);
+    public Cliente(String id, String nombre, String direccion, String whatsapp, String ciudad, String pais, String correo, String metodoPago, String telefono) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
         this.whatsapp = whatsapp;
         this.ciudad = ciudad;
         this.pais = pais;
@@ -26,6 +32,8 @@ public class Cliente extends Entidad {
         this.metodoPago = metodoPago;
         this.telefono = telefono;
     }
+
+    
     
     
 
