@@ -61,18 +61,18 @@
                         <TextArea fx:id="textDescripcion" prefHeight="67.0" prefWidth="304.0" />
                         <Label prefHeight="17.0" prefWidth="46.0" text="Precio" />
                         <TextField fx:id="textPrecio" />
-                        <ComboBox fx:id="comboCategoria" prefHeight="25.0" prefWidth="119.0" promptText="Categoria">
+                        <ComboBox fx:id="comboCategoria" prefHeight="25.0" prefWidth="119.0" promptText="Categoria" styleClass="buttons" stylesheets="@style.css">
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin></ComboBox>
-                        <Button mnemonicParsing="false" onAction="#event_agregarfoto" prefHeight="25.0" prefWidth="117.0" text="agregar foto" />
+                        <Button mnemonicParsing="false" onAction="#event_agregarfoto" prefHeight="25.0" prefWidth="117.0" styleClass="buttons" stylesheets="@style.css" text="agregar foto" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
                   </VBox>
-                  <Button layoutX="14.0" layoutY="419.0" mnemonicParsing="false" onAction="#event_guardar" prefHeight="25.0" prefWidth="72.0" text="Guardar" />
-                  <Button layoutX="115.0" layoutY="419.0" mnemonicParsing="false" onAction="#event_agregarInfoP" prefHeight="25.0" prefWidth="208.0" text="agregar  información del proveedor" />
+                  <Button layoutX="14.0" layoutY="419.0" mnemonicParsing="false" onAction="#event_guardar" prefHeight="25.0" prefWidth="72.0" styleClass="buttons" stylesheets="@style.css" text="Guardar" />
+                  <Button layoutX="115.0" layoutY="419.0" mnemonicParsing="false" onAction="#event_agregarInfoP" prefHeight="25.0" prefWidth="208.0" styleClass="buttons" stylesheets="@style.css" text="agregar  información del proveedor" />
                </children>
             </Pane>
          </center>
