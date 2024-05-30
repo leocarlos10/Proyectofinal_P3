@@ -21,12 +21,14 @@ public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema{
             String descripcion,
             String coleccion,
             String categoria,
-            int precio){
+            int precio,
+            int cantidadUnidades){
        
        // instancio la clase lista para poder guardar cada producto en una lista
        Lista_Productos listaP = new Lista_Productos();
        //guardamos el producto en la lista
-       listaP.agregarProducto(new Producto( nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria));
+       listaP.agregarProducto(new Producto( nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria,cantidadUnidades));
+       listaP.mostrarDatos();
    }
    
    

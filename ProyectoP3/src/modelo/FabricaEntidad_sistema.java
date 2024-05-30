@@ -22,7 +22,8 @@ public interface FabricaEntidad_sistema {
             String descripcion,
             String coleccion,
             String categoria,
-            int precio);
+            int precio,
+            int cantidadUnidades);
    
    
    void RegistroPedido(

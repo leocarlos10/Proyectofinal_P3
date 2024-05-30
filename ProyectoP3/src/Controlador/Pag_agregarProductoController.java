@@ -47,6 +47,9 @@ public class Pag_agregarProductoController implements Initializable {
 
     @FXML
     private TextField textPrecio;
+    
+     @FXML
+    private TextField textCantidadunidades;
 
     @FXML
     private TextField textnombre;
@@ -67,7 +70,8 @@ public class Pag_agregarProductoController implements Initializable {
                 textDescripcion.getText(), 
                 textColeccion.getText(), 
                 comboCategoria.getValue(), 
-                Integer.parseInt(textPrecio.getText()));
+                Integer.parseInt(textPrecio.getText()),
+                Integer.parseInt(textCantidadunidades.getText()));
         
         // limpiamos los campos
         textnombre.setText("");
@@ -75,6 +79,9 @@ public class Pag_agregarProductoController implements Initializable {
         textColeccion.setText("");
         comboCategoria.setValue(null);
         textPrecio.setText("");
+        textCantidadunidades.setText("");
+        textnombre.requestFocus();
+        
 
     }
     
@@ -87,6 +94,8 @@ public class Pag_agregarProductoController implements Initializable {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            Pag_agregar_proveedorController Controller = loader.getController();
+            Controller.setStage(stage);
             stage.setScene(scene);
             stage.show();
             

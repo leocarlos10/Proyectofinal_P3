@@ -1,7 +1,30 @@
 package ConexionDAO;
 
+import java.util.List;
+import modelo.Producto;
+import modelo.Cliente; 
+import modelo.Pedido;
+import modelo.Proveedor;
+
+
 public class ProductoBD {
 
+    public void insertarCliente( List<Cliente> clientes ) {
+    }
+    
+    
+    public void insertarPedidos( List<Pedido> pedidos ){
+    
+    }
+    
+    public void insertarProveedor( List <Proveedor> proveedores ){
+    
+    }
+    
+    public void insertarProductos( List <Producto> productos ){
+        
+    } 
+       
 }
 
 /*
