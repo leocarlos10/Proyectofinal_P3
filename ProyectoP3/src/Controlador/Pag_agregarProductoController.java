@@ -4,7 +4,11 @@
  */
 package Controlador;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,10 +17,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import modelo.FabricaEntidad_sistema;
 import modelo.FabricaEntidad_sistema2;
 
@@ -27,11 +36,15 @@ import modelo.FabricaEntidad_sistema2;
  */
 public class Pag_agregarProductoController implements Initializable {
     
-    Stage stage1;
     
+    // inicializo el FileCooser herramienta de javafx que ayuda a seleccionar archivos del sistema
+    FileChooser fileC = new FileChooser();
+    Stage stage1;
     public void setStage(Stage stage){
         this.stage1 = stage;
     }
+    // varaible glabal para ayudar a nombrar las imagenes
+    int i=1;
 
      @FXML
     private Pane Pane;
@@ -47,13 +60,33 @@ public class Pag_agregarProductoController implements Initializable {
 
     @FXML
     private TextField textPrecio;
+    
+     @FXML
+    private TextField textCantidadunidades;
 
     @FXML
     private TextField textnombre;
     
+     @FXML
+    private ImageView imagen_P;
+
+    @FXML
+    private Label info_Producto;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         comboCategoria.getItems().addAll("Sombrero","Bolso","Otros accesorios");
+        info_Producto.setVisible(false);
+        
+        // le agrego un titulo al filechooser
+        fileC.setTitle("Selecciona una imagen");
+        // le agrego un filtro para que solo se puedan subir archivos .png,.jpg,.jpeg
+        fileC.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Archivos de Imagen", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+        // le agrego un directorio incial utilizo System.getProperty("user.home"),"/Downloads" 
+        // para abrir el directorio de descargas desde cualquier pc
+          fileC.setInitialDirectory(new File(System.getProperty("user.home"),"/Downloads"));
     }
     
     
@@ -67,7 +100,8 @@ public class Pag_agregarProductoController implements Initializable {
                 textDescripcion.getText(), 
                 textColeccion.getText(), 
                 comboCategoria.getValue(), 
-                Integer.parseInt(textPrecio.getText()));
+                Integer.parseInt(textPrecio.getText()),
+                Integer.parseInt(textCantidadunidades.getText()));
         
         // limpiamos los campos
         textnombre.setText("");
@@ -75,6 +109,9 @@ public class Pag_agregarProductoController implements Initializable {
         textColeccion.setText("");
         comboCategoria.setValue(null);
         textPrecio.setText("");
+        textCantidadunidades.setText("");
+        textnombre.requestFocus();
+        
 
     }
     
@@ -87,6 +124,8 @@ public class Pag_agregarProductoController implements Initializable {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            Pag_agregar_proveedorController Controller = loader.getController();
+            Controller.setStage(stage);
             stage.setScene(scene);
             stage.show();
             
@@ -99,7 +138,41 @@ public class Pag_agregarProductoController implements Initializable {
 
     @FXML
     void event_agregarfoto(ActionEvent event) {
+        
+        // hacemos visible el LabelInfo
+        info_Producto.setVisible(true);
+         // abrimos una ventana para que el usuario seleccione la imagen
+        File file = fileC.showOpenDialog(new Stage());
+        // verificamos si el usuario subio la imagen
+        if (file != null) {
+            Image image = new Image(file.toURI().toString());
+            imagen_P.setImage(image);
+        }
+        
+        /* Definir la carpeta de destino dentro del proyecto
+        //System.getProperty("user.dir") nos devulve la ruta de la carpeta del proyceto
+        para luego agregar la ruta especefica dentro del proyecto donde queremos guardar la imagen
+        */ 
+            File destinationDir = new File(System.getProperty("user.dir"), "src/imagenes_productos");
+            // si no existe lo crea con el metodo mkdirs()
+            if (!destinationDir.exists()) {
+                destinationDir.mkdirs();
+            }
+             
+            // creo el archivo de destino con el nombre del producto.
+            File destinationFile = new File(destinationDir, "imagen"+i+".jpg");
+            i++;
+        try {
+            copyFile(file, destinationFile);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e);
+        } 
 
+    }
+    
+    // este metodo copia la imagen de la carpeta donde esta hacia la carpeta de imagen_productos
+      private void copyFile(File source, File destination) throws IOException {
+        Files.copy(source.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
     
 }

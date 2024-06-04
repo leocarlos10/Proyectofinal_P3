@@ -17,21 +17,25 @@ public class Producto  {
     String descripcion;
     String coleccion;
     String categoria;
+    int cantidadUnidades;
 
-    public Producto( String nombre, int precio, String tipo_E_sistema, String descripcion, String coleccion, String categoria) {
-        
+    public Producto( String nombre, int precio, String tipo_E_sistema, String descripcion, String coleccion, String categoria, int cantidadUnidades) {
         this.nombre = nombre;
         this.precio = precio;
         this.tipo_E_sistema = tipo_E_sistema;
         this.descripcion = descripcion;
         this.coleccion = coleccion;
         this.categoria = categoria;
+        this.cantidadUnidades = cantidadUnidades;
     }
 
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", tipo_E_sistema=" + tipo_E_sistema + ", descripcion=" + descripcion + ", coleccion=" + coleccion + ", categoria=" + categoria + '}';
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", tipo_E_sistema=" + tipo_E_sistema + ", descripcion=" + descripcion + ", coleccion=" + coleccion + ", categoria=" + categoria + ", cantidadUnidades=" + cantidadUnidades + '}';
     }
+
+   
+
     
     
 

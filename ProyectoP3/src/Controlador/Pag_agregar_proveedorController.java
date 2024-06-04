@@ -48,6 +48,10 @@ public class Pag_agregar_proveedorController implements Initializable {
     
     @FXML
     void event_guardar(ActionEvent event) {
+        
+        // logica para guardar el proveedor en la lista
+        // luego cerremos la ventana.
+        stage.close();
 
     }
 

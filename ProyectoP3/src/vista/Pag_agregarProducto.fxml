@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="567.0" prefWidth="708.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.Pag_agregarProductoController">
+<AnchorPane id="AnchorPane" prefHeight="603.0" prefWidth="772.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.Pag_agregarProductoController">
     <stylesheets>
         <URL value="@pag_agregarproducto.css" />
     </stylesheets>
@@ -33,7 +33,7 @@
             </Pane>
          </top>
          <right>
-            <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="505.0" prefWidth="245.0" BorderPane.alignment="CENTER">
+            <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="505.0" prefWidth="193.0" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="35.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -51,7 +51,7 @@
          <center>
             <Pane fx:id="Pane" prefHeight="505.0" prefWidth="530.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutX="14.0" layoutY="8.0" prefHeight="372.0" prefWidth="286.0" spacing="10.0">
+                  <VBox layoutX="14.0" layoutY="8.0" prefHeight="415.0" prefWidth="258.0" spacing="10.0">
                      <children>
                         <Label prefHeight="17.0" prefWidth="68.0" text="Nombre" />
                         <TextField fx:id="textnombre" />
@@ -61,6 +61,8 @@
                         <TextArea fx:id="textDescripcion" prefHeight="67.0" prefWidth="304.0" />
                         <Label prefHeight="17.0" prefWidth="46.0" text="Precio" />
                         <TextField fx:id="textPrecio" />
+                        <Label prefHeight="17.0" prefWidth="131.0" text="Cantidad en unidades" />
+                        <TextField fx:id="textCantidadunidades" />
                         <ComboBox fx:id="comboCategoria" prefHeight="25.0" prefWidth="119.0" promptText="Categoria" styleClass="buttons" stylesheets="@style.css">
                            <VBox.margin>
                               <Insets top="3.0" />
@@ -71,8 +73,10 @@
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
                   </VBox>
-                  <Button layoutX="14.0" layoutY="419.0" mnemonicParsing="false" onAction="#event_guardar" prefHeight="25.0" prefWidth="72.0" styleClass="buttons" stylesheets="@style.css" text="Guardar" />
-                  <Button layoutX="115.0" layoutY="419.0" mnemonicParsing="false" onAction="#event_agregarInfoP" prefHeight="25.0" prefWidth="208.0" styleClass="buttons" stylesheets="@style.css" text="agregar  información del proveedor" />
+                  <Button layoutX="14.0" layoutY="446.0" mnemonicParsing="false" onAction="#event_guardar" prefHeight="25.0" prefWidth="72.0" styleClass="buttons" stylesheets="@style.css" text="Guardar" />
+                  <Button layoutX="115.0" layoutY="446.0" mnemonicParsing="false" onAction="#event_agregarInfoP" prefHeight="25.0" prefWidth="208.0" styleClass="buttons" stylesheets="@style.css" text="agregar  información del proveedor" />
+                  <ImageView fx:id="imagen_P" fitHeight="158.0" fitWidth="264.0" layoutX="290.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="info_Producto" layoutX="304.0" layoutY="24.0" prefHeight="17.0" prefWidth="113.0" text="Foto del producto" />
                </children>
             </Pane>
          </center>
