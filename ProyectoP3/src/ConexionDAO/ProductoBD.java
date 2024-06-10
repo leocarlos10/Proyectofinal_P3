@@ -1,5 +1,6 @@
 package ConexionDAO;
 
+import java.sql.Connection;
 import java.util.List;
 import modelo.Producto;
 import modelo.Cliente; 
@@ -9,7 +10,14 @@ import modelo.Proveedor;
 
 public class ProductoBD {
 
+    private ConexionMySQL con;
+    
+    public ProductoBD(){
+        con = new ConexionMySQL();
+    }
+            
     public void insertarCliente( List<Cliente> clientes ) {
+        Connection connect = con.getConnection();
     }
     
     
