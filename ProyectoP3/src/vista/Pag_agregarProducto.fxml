@@ -13,25 +13,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="603.0" prefWidth="772.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.Pag_agregarProductoController">
+<AnchorPane id="AnchorPane" prefHeight="471.0" prefWidth="886.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.Pag_agregarProductoController">
     <stylesheets>
         <URL value="@pag_agregarproducto.css" />
     </stylesheets>
    <children>
-      <BorderPane layoutY="8.0" prefHeight="567.0" prefWidth="689.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <Pane prefHeight="62.0" prefWidth="645.0" style="-fx-background-color: #FFB300;" BorderPane.alignment="CENTER">
-               <children>
-                  <Label layoutX="46.0" layoutY="23.0" prefHeight="17.0" prefWidth="346.0" text="REGISTRE UN PRODUCTO">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-         </top>
+      <BorderPane layoutY="8.0" prefHeight="567.0" prefWidth="689.0" style="-fx-background-color: #ECF0F1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <right>
             <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="505.0" prefWidth="193.0" BorderPane.alignment="CENTER">
                <children>
@@ -54,15 +42,15 @@
                   <VBox layoutX="14.0" layoutY="8.0" prefHeight="415.0" prefWidth="258.0" spacing="10.0">
                      <children>
                         <Label prefHeight="17.0" prefWidth="68.0" text="Nombre" />
-                        <TextField fx:id="textnombre" />
+                        <TextField fx:id="textnombre" styleClass="inputs" stylesheets="@style.css" />
                         <Label prefHeight="17.0" prefWidth="69.0" text="Colección" />
-                        <TextField fx:id="textColeccion" />
+                        <TextField fx:id="textColeccion" styleClass="inputs" stylesheets="@style.css" />
                         <Label prefHeight="17.0" prefWidth="94.0" text="Descripción" />
-                        <TextArea fx:id="textDescripcion" prefHeight="67.0" prefWidth="304.0" />
+                        <TextArea fx:id="textDescripcion" prefHeight="67.0" prefWidth="304.0" styleClass="inputs" stylesheets="@style.css" />
                         <Label prefHeight="17.0" prefWidth="46.0" text="Precio" />
-                        <TextField fx:id="textPrecio" />
+                        <TextField fx:id="textPrecio" styleClass="inputs" stylesheets="@style.css" />
                         <Label prefHeight="17.0" prefWidth="131.0" text="Cantidad en unidades" />
-                        <TextField fx:id="textCantidadunidades" />
+                        <TextField fx:id="textCantidadunidades" styleClass="inputs" stylesheets="@style.css" />
                         <ComboBox fx:id="comboCategoria" prefHeight="25.0" prefWidth="119.0" promptText="Categoria" styleClass="buttons" stylesheets="@style.css">
                            <VBox.margin>
                               <Insets top="3.0" />
@@ -73,8 +61,8 @@
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
                   </VBox>
-                  <Button layoutX="14.0" layoutY="446.0" mnemonicParsing="false" onAction="#event_guardar" prefHeight="25.0" prefWidth="72.0" styleClass="buttons" stylesheets="@style.css" text="Guardar" />
-                  <Button layoutX="115.0" layoutY="446.0" mnemonicParsing="false" onAction="#event_agregarInfoP" prefHeight="25.0" prefWidth="208.0" styleClass="buttons" stylesheets="@style.css" text="agregar  información del proveedor" />
+                  <Button layoutX="14.0" layoutY="433.0" mnemonicParsing="false" onAction="#event_guardar" prefHeight="25.0" prefWidth="72.0" styleClass="buttons" stylesheets="@style.css" text="Guardar" />
+                  <Button layoutX="115.0" layoutY="433.0" mnemonicParsing="false" onAction="#event_agregarInfoP" prefHeight="25.0" prefWidth="208.0" styleClass="buttons" stylesheets="@style.css" text="agregar  información del proveedor" />
                   <ImageView fx:id="imagen_P" fitHeight="158.0" fitWidth="264.0" layoutX="290.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="info_Producto" layoutX="304.0" layoutY="24.0" prefHeight="17.0" prefWidth="113.0" text="Foto del producto" />
                </children>

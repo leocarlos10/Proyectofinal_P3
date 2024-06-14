@@ -5,11 +5,14 @@
 package Controlador;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,12 +43,14 @@ public class Pag_agregarProductoController implements Initializable {
     // inicializo el FileCooser herramienta de javafx que ayuda a seleccionar archivos del sistema
     FileChooser fileC = new FileChooser();
     Stage stage1;
-    public void setStage(Stage stage){
+
+    public void setStage(Stage stage) {
         this.stage1 = stage;
     }
-    // varaible glabal para ayudar a nombrar las imagenes
-    int i=1;
-
+    // varaible global para ayudar a nombrar las imagenes
+    int i = obtenerIterador();
+    
+   
      @FXML
     private Pane Pane;
 
@@ -133,7 +138,6 @@ public class Pag_agregarProductoController implements Initializable {
 
             System.out.println("Error en el cambio de ventana");
         }
-
     }
 
     @FXML
@@ -162,6 +166,8 @@ public class Pag_agregarProductoController implements Initializable {
             // creo el archivo de destino con el nombre del producto.
             File destinationFile = new File(destinationDir, "imagen"+i+".jpg");
             i++;
+            //guardamos el iterador que nombra las imagenes
+            guardar_iterador();
         try {
             copyFile(file, destinationFile);
         } catch (IOException e) {
@@ -171,8 +177,44 @@ public class Pag_agregarProductoController implements Initializable {
     }
     
     // este metodo copia la imagen de la carpeta donde esta hacia la carpeta de imagen_productos
-      private void copyFile(File source, File destination) throws IOException {
+     private void copyFile(File source, File destination) throws IOException {
         Files.copy(source.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
+     
+    private void guardar_iterador() {
+
+        try {
+            FileWriter escritura = new FileWriter("src/Controlador/iterador_nombre_imagenes/iterador.txt");
+            escritura.write(String.valueOf(i));
+            escritura.close();
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error " + e);
+        }
+    }
     
+    private int obtenerIterador() {
+
+        int iterador = 1;
+
+        try {
+
+            Scanner scanner = new Scanner(new File("src/Controlador/iterador_nombre_imagenes/iterador.txt"));
+
+            while (scanner.hasNextLine()) {
+                String linea = scanner.nextLine();
+                if (!linea.equalsIgnoreCase(" ")) {
+                    iterador = Integer.parseInt(linea);
+                } else {
+                    iterador = 1;
+                }
+            }
+
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+        return iterador;
+    }  
 }

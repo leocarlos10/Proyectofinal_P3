@@ -23,12 +23,12 @@ public class ProductoDAO implements DAO<Producto> {
             
             statement = connection.prepareStatement(query);
             
-            statement.setString(1, producto.getNombre());
-            statement.setDouble(2, producto.getPrecio());
-            statement.setString(3, producto.getTipo_E_sistema());
-            statement.setString(4, producto.getDescripcion());
-            statement.setString(5, producto.getColeccion());
-            statement.setString(6, producto.getCategoria());
+            //statement.setString(1, producto.getNombre());
+            //statement.setDouble(2, producto.getPrecio());
+            //statement.setString(3, producto.getTipo_E_sistema());
+            //statement.setString(4, producto.getDescripcion());
+            //statement.setString(5, producto.getColeccion());
+            //statement.setString(6, producto.getCategoria());
 
             statement.executeUpdate();
         } catch (SQLException e) {

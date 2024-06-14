@@ -21,6 +21,8 @@ public class ProyectoP3 extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/vista/Pag_Inicio.fxml"));
         
         Scene scene = new Scene(root);
+        // cargar archivo style.css
+        scene.getStylesheets().add(getClass().getResource("/vista/style.css").toExternalForm());
         
         stage.setScene(scene);
         stage.show();
