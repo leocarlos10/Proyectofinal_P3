@@ -28,7 +28,7 @@ public class Producto  {
         this.categoria = categoria;
         this.cantidadUnidades = cantidadUnidades;
     }
-
+    
     @Override
     public String toString() {
         return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", tipo_E_sistema=" + tipo_E_sistema + ", descripcion=" + descripcion + ", coleccion=" + coleccion + ", categoria=" + categoria + ", cantidadUnidades=" + cantidadUnidades + '}';
