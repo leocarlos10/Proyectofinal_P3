@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexionMySQL implements InterfaceConexionMySQL {
+public class ConexionMySQL implements InterfaceConection {
 
     private static Connection con;
 
@@ -24,6 +24,7 @@ public class ConexionMySQL implements InterfaceConexionMySQL {
 
     }
 
+    @Override
     public Connection getConnection() {
         return con;
     }
@@ -32,10 +33,6 @@ public class ConexionMySQL implements InterfaceConexionMySQL {
         if (con != null) {
             con.close();
         }
-    }
-
-    @Override
-    public void connect() {
     }
 
     @Override

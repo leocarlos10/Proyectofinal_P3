@@ -1,12 +1,13 @@
 package ConexionDAO;
 
+import java.sql.Connection;
 import modelo.Proveedor;
 
 public class ProveedorDAO implements DAO<Proveedor> {
 
-    private ConexionMySQL connection;
+    private Connection connection;
 
-    public ProveedorDAO(ConexionMySQL connection) {
+    public ProveedorDAO(Connection connection) {
         this.connection = connection;
     }
 

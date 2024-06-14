@@ -4,9 +4,9 @@ import java.sql.Connection;
 import modelo.Cliente;
 
 public class ClienteDAO implements DAO<Cliente> {
-    private ConexionMySQL connection;
+    private Connection connection;
     
-    public ClienteDAO(ConexionMySQL connection) {
+    public ClienteDAO(Connection connection) {
         this.connection = connection;
     }
 

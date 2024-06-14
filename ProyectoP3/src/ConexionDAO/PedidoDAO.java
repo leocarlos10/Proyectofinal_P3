@@ -1,12 +1,13 @@
 package ConexionDAO;
 
+import java.sql.Connection;
 import modelo.Pedido;
 
 public class PedidoDAO implements DAO<Pedido> {
 
-    private ConexionMySQL connection;
+    private Connection connection;
 
-    public PedidoDAO(ConexionMySQL connection) {
+    public PedidoDAO(Connection connection) {
         this.connection = connection;
     }
 
