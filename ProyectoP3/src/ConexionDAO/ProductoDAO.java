@@ -17,9 +17,14 @@ public class ProductoDAO implements DAO<Producto> {
     public void create(Producto producto) {
 
         try {
+            
+            if (connection == null || connection.isClosed()) {
+                System.out.println("conexion nula");
+                throw new SQLException("La conexión a la base de datos no está disponible.");
+            }
 
             PreparedStatement statement;
-            String query = "INSERT INTO productos (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria,cantidadUnidades) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO producto (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria,cantidadUnidades) VALUES (?, ?, ?, ?, ?, ?, ?)";
             
             statement = connection.prepareStatement(query);
             
@@ -29,9 +34,9 @@ public class ProductoDAO implements DAO<Producto> {
             statement.setString(4, producto.getDescripcion());
             statement.setString(5, producto.getColeccion());
             statement.setString(6, producto.getCategoria());
+            statement.setInt(7, producto.getCantidadUnidades());
 
             statement.executeUpdate();
-            connection.close();
             statement.close();
             
         } catch (SQLException e) {

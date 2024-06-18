@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -99,7 +100,8 @@ public class Pag_agregarProductoController implements Initializable {
     void event_guardar(ActionEvent event) {
         
         FabricaEntidad_sistema fabrica = new FabricaEntidad_sistema2();
-        fabrica.RegistroProducto(
+        try{
+            fabrica.RegistroProducto(
                 textnombre.getText(), 
                 "producto", 
                 textDescripcion.getText(), 
@@ -107,6 +109,14 @@ public class Pag_agregarProductoController implements Initializable {
                 comboCategoria.getValue(), 
                 Integer.parseInt(textPrecio.getText()),
                 Integer.parseInt(textCantidadunidades.getText()));
+        }catch(NumberFormatException e){
+            
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("SUGERENCIA");
+        alerta.setContentText("Por favor revise que ningun campo este vacio");
+        alerta.show();
+    
+        }
         
         // limpiamos los campos
         textnombre.setText("");
@@ -116,6 +126,7 @@ public class Pag_agregarProductoController implements Initializable {
         textPrecio.setText("");
         textCantidadunidades.setText("");
         textnombre.requestFocus();
+        imagen_P.setImage(null);
         
         
     }
