@@ -42,7 +42,8 @@ CREATE TABLE Producto (
     tipo_E_sistema VARCHAR(50),
     descripcion TEXT,
     coleccion VARCHAR(100),
-    categoria VARCHAR(100)
+    categoria VARCHAR(100),
+    cantidadUnidades INT NOT NULL
 );
 
 
@@ -66,8 +67,8 @@ VALUES
 ('Proveedor XYZ', 'Avenida Principal 456', 'Persona Jurídica', '123456789', 'Tipo de Producto A', 100);
 
 -- Producto
-INSERT INTO Producto (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria)
+INSERT INTO Producto (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria, cantidadUnidades )
 VALUES
-('Producto 1', 75, 'Sistema Y', 'Descripción del producto 1', 'Colección Primavera 2024', 'Categoría A');
+('Producto 1', 75, 'Sistema Y', 'Descripción del producto 1', 'Colección Primavera 2024', 'Categoría A', 10 );
 
 

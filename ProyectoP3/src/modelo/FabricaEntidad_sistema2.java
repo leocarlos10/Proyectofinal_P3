@@ -5,6 +5,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 import modelo.Estructura_Datos.ListaPedidos;
 import modelo.Estructura_Datos.Lista_Productos;
 
@@ -30,22 +31,16 @@ public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema{
        listaP.agregarProducto(new Producto( nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria,cantidadUnidades));
    }
    
-   
-   @Override
+    
+    @Override
    public void RegistroPedido(
-            String nombre,
             String tipo_E_sistema,
             int C_unidades,
-            int precio,
             LocalDate fecha
    ){
        
        ListaPedidos listapedidos = new ListaPedidos();
-       listapedidos.agregarPedido(new Pedido(nombre, precio, tipo_E_sistema, C_unidades, fecha));
-   
+       listapedidos.agregarPedido(new Pedido(  tipo_E_sistema, C_unidades, fecha));
+       
    }
-   
-  
-
-    
 }

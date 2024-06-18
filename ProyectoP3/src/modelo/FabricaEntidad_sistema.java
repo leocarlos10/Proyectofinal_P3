@@ -5,6 +5,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -27,10 +28,8 @@ public interface FabricaEntidad_sistema {
    
    
    void RegistroPedido(
-            String nombre,
             String tipo_E_sistema,
             int C_unidades,
-            int precio,
             LocalDate fecha
    );
     
