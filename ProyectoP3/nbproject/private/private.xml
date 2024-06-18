@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/Controlador/Pag_AgregarPedidoController.java</file>
             <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/Producto.java</file>
             <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/FabricaEntidad_sistema.java</file>
@@ -17,6 +18,23 @@
             <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/Controlador/Pag_InventarioController.java</file>
             <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/Controlador/Pag_agregarProductoController.java</file>
             <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/FabricaEntidad2.java</file>
+=======
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/Producto.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/ConexionDAO/DAO.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/ConexionDAO/PedidoDAO.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/ConexionDAO/ProveedorDAO.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/FabricaEntidad.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/Estructura_Datos/Lista_Productos.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/Proveedor.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/Estructura_Datos/ListaClientes.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/Controlador/Pag_agregar_proveedorController.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/ConexionDAO/ProductoDAO.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/ConexionDAO/InterfaceConection.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/Controlador/Pag_agregarProductoController.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/ConexionDAO/ClienteDAO.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/ConexionDAO/ConexionMySQL.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/FabricaEntidad_sistema2.java</file>
+>>>>>>> dfa3aaa7ba5975e376011a1a3f32fb1fbd1d0509
         </group>
     </open-files>
 </project-private>

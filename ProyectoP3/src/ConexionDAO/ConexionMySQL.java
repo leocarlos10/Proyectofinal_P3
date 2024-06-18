@@ -4,14 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
-public class ConexionMySQL {
+public class ConexionMySQL implements InterfaceConection {
 
     private static Connection con;
 
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String user = "root";
-    private static final String paswword = "password";
+    private static final String paswword = "";
     private static final String url = "jdbc:mysql://localhost/SGestion_I_P";
 
     public ConexionMySQL() {
@@ -25,18 +24,20 @@ public class ConexionMySQL {
 
     }
 
+    @Override
     public Connection getConnection() {
         return con;
-    }
-
-    public void desconectar() {
-        con = null;
     }
 
     public void cerrar() throws SQLException {
         if (con != null) {
             con.close();
         }
+    }
+
+    @Override
+    public void disconnect() {
+        con = null;
     }
 
 }
