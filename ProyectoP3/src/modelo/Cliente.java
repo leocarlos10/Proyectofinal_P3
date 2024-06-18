@@ -17,7 +17,7 @@ public class Cliente  {
     String whatsapp;
     String ciudad;
     String pais;
-    String correo;
+    String correo;  
     String metodoPago;
     String telefono;
 

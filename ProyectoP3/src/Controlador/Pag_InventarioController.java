@@ -85,7 +85,7 @@ public class Pag_InventarioController implements Initializable {
         newVBox.setAlignment(Pos.TOP_CENTER);
         //dimensiones del VBox
         newVBox.setPrefWidth(245);
-        newVBox.setPrefHeight(237);
+        newVBox.setPrefHeight(239);
         
         // agregamos el nombre
         Label Lnombre = new Label(nombre);
@@ -152,24 +152,22 @@ public class Pag_InventarioController implements Initializable {
         // botones
         Button AgregarP = new Button("Agregar pedido");
         AgregarP.getStyleClass().add("buttons");
-        AgregarP.setOnAction(event ->{
-            
+        AgregarP.setOnAction((ActionEvent event) ->{
             try {
-                // primero cambia la scene 
+                
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/Pag_AgregarPedido.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 Pag_AgregarPedidoController controller = loader.getController();
-                controller.setElementos(url_Imagen, producto,stage);
+                controller.setElementos(url_Imagen, producto, stage);
+                stage.show();
                 
-            } catch (Exception e) {
-                System.out.println("error " +e);
-                JOptionPane.showMessageDialog(null, "Error al cambiar al principal " + e);
-            } 
+            } catch (IOException ex) {
+                System.out.println("error " + ex);
+            }
         });
-        
          Button Eliminar = new Button("Eliminar ");
         Eliminar.getStyleClass().add("buttons");
         Eliminar.setOnAction(event ->{

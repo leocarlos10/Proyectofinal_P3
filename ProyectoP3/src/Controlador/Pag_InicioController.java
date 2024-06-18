@@ -32,7 +32,7 @@ public class Pag_InicioController implements Initializable {
      @FXML
     private StackPane stackPane;
     
-    AnchorPane Pag_Inventario, Pag_Inicio_Imagenes,Pag_agregar_producto;
+    AnchorPane Pag_Inventario, Pag_Inicio_Imagenes,Pag_agregar_producto,Pag_Pedido;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -41,7 +41,8 @@ public class Pag_InicioController implements Initializable {
             Pag_Inventario = cargarVentanas("/vista/Pag_Inventario.fxml");
             Pag_Inicio_Imagenes = cargarVentanas("/vista/Pag_Inicio_Imagenes.fxml");
             Pag_agregar_producto = cargarVentanas("/vista/Pag_agregarProducto.fxml");
-            stackPane.getChildren().addAll(Pag_Inicio_Imagenes,Pag_agregar_producto,Pag_Inventario);
+            Pag_Pedido = cargarVentanas("/vista/Pag_Pedido.fxml");
+            stackPane.getChildren().addAll(Pag_Inicio_Imagenes,Pag_agregar_producto,Pag_Inventario,Pag_Pedido);
 
         } catch (Exception e) {
             System.out.println("error en el cambio de ventana" + e);
@@ -51,6 +52,7 @@ public class Pag_InicioController implements Initializable {
         Pag_agregar_producto.setVisible(false);
         Pag_Inventario.setVisible(false);
         Pag_Inicio_Imagenes.setVisible(true);
+        Pag_Pedido.setVisible(false);
     }
 
     @FXML
@@ -58,6 +60,7 @@ public class Pag_InicioController implements Initializable {
         Pag_agregar_producto.setVisible(true);
         Pag_Inventario.setVisible(false);
         Pag_Inicio_Imagenes.setVisible(false);
+        Pag_Pedido.setVisible(false);
     }
 
     @FXML
@@ -66,6 +69,7 @@ public class Pag_InicioController implements Initializable {
         Pag_agregar_producto.setVisible(false);
         Pag_Inventario.setVisible(true);
         Pag_Inicio_Imagenes.setVisible(false);
+        Pag_Pedido.setVisible(false);
 
     }
     
@@ -74,8 +78,18 @@ public class Pag_InicioController implements Initializable {
          Pag_agregar_producto.setVisible(false);
          Pag_Inventario.setVisible(false);
          Pag_Inicio_Imagenes.setVisible(true);
+         Pag_Pedido.setVisible(false);
 
 
+    }
+    
+     @FXML
+    void event_mostrarPedidos(ActionEvent event) {
+        
+         Pag_agregar_producto.setVisible(false);
+         Pag_Inventario.setVisible(false);
+         Pag_Inicio_Imagenes.setVisible(false);
+         Pag_Pedido.setVisible(true);
     }
     
     // este metodo carga las ventanas del stakpane.

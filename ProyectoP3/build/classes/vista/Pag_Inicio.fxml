@@ -23,6 +23,7 @@
                   <Button fx:id="btn_agregarproducto" layoutX="191.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_agregar_producto" prefHeight="25.0" prefWidth="112.0" styleClass="button_header" stylesheets="@style.css" text="Agregar Producto">
                   </Button>
                   <Button layoutX="327.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_Inventario" styleClass="button_header" stylesheets="@style.css" text="Inventario" />
+                  <Button layoutX="417.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_mostrarPedidos" styleClass="button_header" stylesheets="@style.css" text="Pedidos" />
                </children>
             </Pane>
          </top>

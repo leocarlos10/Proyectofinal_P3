@@ -13,15 +13,11 @@ import java.time.LocalDate;
 public class Pedido  {
      
     String id;
-    String nombre;
-    int precio;
     String tipo_E_sistema;
     int C_unidades;
     LocalDate fecha;
 
-    public Pedido( String nombre, int precio, String tipo_E_sistema, int C_unidades, LocalDate fecha) {
-        this.nombre = nombre;
-        this.precio = precio;
+    public Pedido(  String tipo_E_sistema, int C_unidades, LocalDate fecha) {
         this.tipo_E_sistema = tipo_E_sistema;
         this.C_unidades = C_unidades;
         this.fecha = fecha;

@@ -27,20 +27,51 @@ import modelo.Producto;
  */
 public class Pag_AgregarPedidoController implements Initializable {
     
-    String url;
+    String url_imagen;
     Producto producto;
     Stage stage;
 
     public void setElementos(String url, Producto producto,Stage stage){
         
-        this.url = url;
+        this.url_imagen = url;
         this.producto = producto;
         this.stage = stage;
+        CargarDatos();
         
     }
     
-       @FXML
+     @FXML
+    private TextField InputDireccion;
+
+    @FXML
+    private TextField InputNombre;
+
+    @FXML
     private ImageView imagen;
+
+    @FXML
+    private TextField inputCanidadU;
+
+    @FXML
+    private TextField inputCiudad;
+
+    @FXML
+    private TextField inputCorreo;
+
+    @FXML
+    private TextField inputFecha;
+
+    @FXML
+    private TextField inputMetodoPago;
+
+    @FXML
+    private TextField inputPais;
+
+    @FXML
+    private TextField inputTelefono;
+
+    @FXML
+    private TextField inputWhatsapp;
 
     @FXML
     private TextField textCantidadunidades;
@@ -62,14 +93,15 @@ public class Pag_AgregarPedidoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        CargarDatos();
+        
+        
     } 
     
     public void CargarDatos() {
 
         try {
             // cargamos la imagen
-            Image image = new Image(new FileInputStream(url));
+            Image image = new Image(new FileInputStream(url_imagen));
             imagen.setImage(image);
         } catch (FileNotFoundException ex) {
             System.out.println("Error al cargar la imagen" + ex);
@@ -82,6 +114,7 @@ public class Pag_AgregarPedidoController implements Initializable {
         textPrecio.setText(String.valueOf(producto.getPrecio()));
         textCantidadunidades.setText(String.valueOf(producto.getCantidadUnidades()));
         textCategoria.setText(producto.getCategoria());
+        inputCanidadU.requestFocus();
     }
     
      @FXML
