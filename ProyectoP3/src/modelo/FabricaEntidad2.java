@@ -25,8 +25,7 @@ public class FabricaEntidad2 implements FabricaEntidad{
             String metodoPago,
             String telefono){
       
-        ListaClientes listaC = new ListaClientes();
-        listaC.agregarCliente(new Cliente(nombre, direccion, whatsapp, ciudad, pais, correo, metodoPago, telefono));
+        
     }
     
     @Override

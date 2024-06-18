@@ -1,5 +1,7 @@
 package ConexionDAO;
 
+import java.util.List;
+
 public interface DAO<T> {
 
     void create(T entity);

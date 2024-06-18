@@ -19,7 +19,7 @@ public class ProductoDAO implements DAO<Producto> {
         try {
 
             PreparedStatement statement;
-            String query = "INSERT INTO productos (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria) VALUES (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO productos (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria,cantidadUnidades) VALUES (?, ?, ?, ?, ?, ?, ?)";
             
             statement = connection.prepareStatement(query);
             
@@ -31,6 +31,9 @@ public class ProductoDAO implements DAO<Producto> {
             statement.setString(6, producto.getCategoria());
 
             statement.executeUpdate();
+            connection.close();
+            statement.close();
+            
         } catch (SQLException e) {
             System.out.println("Error al insertar producto: " + e.getMessage());
         }
