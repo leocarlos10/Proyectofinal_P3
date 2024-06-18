@@ -2,6 +2,7 @@ package ConexionDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.Producto;
 
@@ -19,7 +20,7 @@ public class ProductoDAO implements DAO<Producto> {
         try {
 
             PreparedStatement statement;
-            String query = "INSERT INTO productos (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria) VALUES (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO Producto (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria) VALUES (?, ?, ?, ?, ?, ?)";
             
             statement = connection.prepareStatement(query);
             
@@ -31,6 +32,8 @@ public class ProductoDAO implements DAO<Producto> {
             statement.setString(6, producto.getCategoria());
 
             statement.executeUpdate();
+            connection.close();
+            
         } catch (SQLException e) {
             System.out.println("Error al insertar producto: " + e.getMessage());
         }
@@ -39,7 +42,27 @@ public class ProductoDAO implements DAO<Producto> {
 
     @Override
     public Producto read(String id) {
-        return null;
+        
+        Producto prod;
+        
+        try {
+            PreparedStatement statement;
+            String query = "SELECT * FROM Producto where id = ?";
+            statement = connection.prepareStatement(query);
+            
+            statement.setString(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            
+           
+            connection.close();
+            
+            
+        } catch (Exception e) {
+            System.out.println("Error al Leer producto: " + e.getMessage());
+        }
+        
+        
+        return prod;
     }
 
     @Override
