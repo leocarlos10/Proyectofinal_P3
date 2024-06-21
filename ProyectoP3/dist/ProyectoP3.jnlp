@@ -8,15 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-<<<<<<< HEAD
-    <jar href="ProyectoP3.jar" size="1101552" download="eager" />
-=======
-<<<<<<< HEAD
-    <jar href="ProyectoP3.jar" size="1121263" download="eager" />
-=======
-    <jar href="ProyectoP3.jar" size="1101400" download="eager" />
->>>>>>> dfa3aaa7ba5975e376011a1a3f32fb1fbd1d0509
->>>>>>> f39aa4d9a1d3c4973f34b3c7c45c9a73964b04cd
+    <jar href="ProyectoP3.jar" size="1124992" download="eager" />
     <jar href="lib\javafx-swt.jar" size="36882" download="eager" />
     <jar href="lib\javafx.base.jar" size="754161" download="eager" />
     <jar href="lib\javafx.controls.jar" size="2585101" download="eager" />
