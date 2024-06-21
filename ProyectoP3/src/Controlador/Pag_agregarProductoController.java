@@ -81,7 +81,7 @@ public class Pag_agregarProductoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        comboCategoria.getItems().addAll("Sombrero","Bolso","Otros accesorios");
+        comboCategoria.getItems().addAll("Sombrero","Bolso","Otros");
         info_Producto.setVisible(false);
         
         // le agrego un titulo al filechooser

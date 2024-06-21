@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import Controlador.Pag_InicioController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,7 +24,6 @@ public class ProyectoP3 extends Application {
         Scene scene = new Scene(root);
         // cargar archivo style.css
         scene.getStylesheets().add(getClass().getResource("/vista/style.css").toExternalForm());
-        
         stage.setScene(scene);
         stage.show();
     }

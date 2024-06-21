@@ -70,13 +70,16 @@ public class Pag_InventarioController implements Initializable {
          que fue extraida de la base de datos.
          */
         fabrica = new FabricaEntidad_sistema2();
-        cargarproductos();
-       
+        if(flowPane.getChildren().isEmpty()){
+             cargarproductos();
+        }
     }
     
     public void cargarproductos(){
         
-         flowPane.getChildren().clear();
+        if(!flowPane.getChildren().isEmpty()){
+             flowPane.getChildren().clear();
+        }
        
         List<Producto> lista = fabrica.ObtenerProductos();
 
