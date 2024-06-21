@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
 import java.time.LocalDate;
@@ -10,26 +6,37 @@ import java.time.LocalDate;
  *
  * @author USUARIO
  */
-public class Pedido  {
-     
-    String id;
-    String tipo_E_sistema;
-    int C_unidades;
-    LocalDate fecha;
+public class Pedido {
 
-    public Pedido(  String tipo_E_sistema, int C_unidades, LocalDate fecha) {
+    private String id;
+    private String tipo_E_sistema;
+    private int C_unidades;
+    private LocalDate fecha;
+
+    public Pedido(
+            String tipo_E_sistema,
+            int C_unidades,
+            LocalDate fecha
+    ) {
         this.tipo_E_sistema = tipo_E_sistema;
         this.C_unidades = C_unidades;
         this.fecha = fecha;
     }
-    
-    
 
-   
+    public String getId() {
+        return id;
+    }
 
-  
+    public String getTipo_E_sistema() {
+        return tipo_E_sistema;
+    }
 
-   
-    
-    
+    public int getC_unidades() {
+        return C_unidades;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
 }

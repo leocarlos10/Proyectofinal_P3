@@ -29,7 +29,9 @@ public class ProductoDAO implements DAO<Producto> {
         try {
             
             PreparedStatement statement;
-            String query = "INSERT INTO producto (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria,cantidadUnidades) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+            String query = "INSERT INTO producto (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria, cantidadUnidades) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
             
             statement = connection.prepareStatement(query);
             
@@ -39,10 +41,12 @@ public class ProductoDAO implements DAO<Producto> {
             statement.setString(4, producto.getDescripcion());
             statement.setString(5, producto.getColeccion());
             statement.setString(6, producto.getCategoria());
+
             statement.setInt(7, producto.getCantidadUnidades());
 
             statement.executeUpdate();
             statement.close();
+
             
         } catch (SQLException e) {
             System.out.println("Error al insertar producto: " + e.getMessage());
@@ -52,6 +56,26 @@ public class ProductoDAO implements DAO<Producto> {
 
     @Override
     public Producto read(String id) {
+        
+        Producto prod;
+        
+        try {
+            PreparedStatement statement;
+            String query = "SELECT * FROM Producto where id = ?";
+            statement = connection.prepareStatement(query);
+            
+            statement.setString(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            
+           
+            connection.close();
+            
+            
+        } catch (Exception e) {
+            System.out.println("Error al Leer producto: " + e.getMessage());
+        }
+        
+        
         return null;
     }
 

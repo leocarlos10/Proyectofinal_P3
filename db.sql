@@ -16,8 +16,6 @@ CREATE TABLE Cliente (
 -- Tabla Pedido
 CREATE TABLE Pedido (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    precio INT NOT NULL,
     tipo_E_sistema VARCHAR(50),
     C_unidades INT NOT NULL,
     fecha DATE
@@ -42,7 +40,8 @@ CREATE TABLE Producto (
     tipo_E_sistema VARCHAR(50),
     descripcion TEXT,
     coleccion VARCHAR(100),
-    categoria VARCHAR(100)
+    categoria VARCHAR(100),
+    cantidadUnidades INT NOT NULL
 );
 
 
@@ -55,9 +54,9 @@ VALUES
 
 -- Pedido
 
-INSERT INTO Pedido (nombre, precio, tipo_E_sistema, C_unidades, fecha)
+INSERT INTO Pedido ( tipo_E_sistema, C_unidades, fecha)
 VALUES
-('Producto A', 50, 'Sistema X', 2, '2024-05-28');
+('Sistema X', 2, '2024-05-28');
 
 -- Proveedor
 
@@ -66,8 +65,8 @@ VALUES
 ('Proveedor XYZ', 'Avenida Principal 456', 'Persona Jurídica', '123456789', 'Tipo de Producto A', 100);
 
 -- Producto
-INSERT INTO Producto (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria)
+INSERT INTO Producto (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria, cantidadUnidades )
 VALUES
-('Producto 1', 75, 'Sistema Y', 'Descripción del producto 1', 'Colección Primavera 2024', 'Categoría A');
+('Producto 1', 75, 'Sistema Y', 'Descripción del producto 1', 'Colección Primavera 2024', 'Categoría A', 10 );
 
 
