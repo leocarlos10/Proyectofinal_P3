@@ -23,7 +23,6 @@ public class ProyectoP3 extends Application {
         Scene scene = new Scene(root);
         // cargar archivo style.css
         scene.getStylesheets().add(getClass().getResource("/vista/style.css").toExternalForm());
-        
         stage.setScene(scene);
         stage.show();
     }
