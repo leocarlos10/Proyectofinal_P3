@@ -16,8 +16,6 @@ CREATE TABLE Cliente (
 -- Tabla Pedido
 CREATE TABLE Pedido (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    precio INT NOT NULL,
     tipo_E_sistema VARCHAR(50),
     C_unidades INT NOT NULL,
     fecha DATE
@@ -56,9 +54,9 @@ VALUES
 
 -- Pedido
 
-INSERT INTO Pedido (nombre, precio, tipo_E_sistema, C_unidades, fecha)
+INSERT INTO Pedido ( tipo_E_sistema, C_unidades, fecha)
 VALUES
-('Producto A', 50, 'Sistema X', 2, '2024-05-28');
+('Sistema X', 2, '2024-05-28');
 
 -- Proveedor
 

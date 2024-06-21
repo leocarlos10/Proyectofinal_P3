@@ -18,7 +18,17 @@ public class Proveedor  {
     String tipo_producto;
     int precio_producto;
 
-    public Proveedor(String id, String nombre, String direccion, String tipo_entidad, String documento, String tipo_producto, int precio_producto) {
+    public Proveedor( 
+            
+            String id, 
+            String nombre, 
+            String direccion, 
+            String tipo_entidad, 
+            String documento, 
+            String tipo_producto, 
+            int precio_producto
+    ) {
+        
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -28,13 +38,5 @@ public class Proveedor  {
         this.precio_producto = precio_producto;
     }
 
-   
 
-   
-
-   
-    
-    
-    
-    
 }

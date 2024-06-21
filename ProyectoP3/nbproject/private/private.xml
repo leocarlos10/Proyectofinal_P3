@@ -2,14 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/ProyectoP3.java</file>
-            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/Controlador/Pag_InventarioController.java</file>
-            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/Controlador/Pag_InicioController.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/Pedido.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/ConexionDAO/PedidoDAO.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/Cliente.java</file>
+            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/ConexionDAO/ClienteDAO.java</file>
         </group>
->>>>>>> 9a2e42d4990dbf19731128aa535b2b8d94ad3719
     </open-files>
 </project-private>
