@@ -3,10 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/Pedido.java</file>
-            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/ConexionDAO/PedidoDAO.java</file>
-            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/modelo/Cliente.java</file>
-            <file>file:/C:/Users/hp/Desktop/Proyectofinal_P3/ProyectoP3/src/ConexionDAO/ClienteDAO.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/modelo/ProyectoP3.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/Controlador/Pag_InventarioController.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/ConexionDAO/DAO.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/Controlador/Pag_agregarProductoController.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/ConexionDAO/ClienteDAO.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/ConexionDAO/PedidoDAO.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/Controlador/Pag_InicioController.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/ConexionDAO/ConexionMySQL.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/ConexionDAO/ProductoDAO.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/programacion3/Proyectofinal/ProyectoP3/src/ConexionDAO/ProveedorDAO.java</file>
         </group>
     </open-files>
 </project-private>

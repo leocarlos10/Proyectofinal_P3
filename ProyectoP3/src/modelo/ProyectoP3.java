@@ -4,7 +4,6 @@
  */
 package modelo;
 
-import Controlador.Pag_InicioController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
