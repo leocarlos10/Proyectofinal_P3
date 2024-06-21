@@ -1,0 +1,103 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+/* css pag inicio y agregar producto*/
+.button_header{
+        
+        -fx-background-color:  #FFB300;
+        -fx-cursor: hand;
+    }
+    
+    
+    .buttons,
+    .comboBox{
+
+        -fx-background-color:  #ECF0F1;
+        -fx-cursor: hand;
+        -fx-border-color: black;
+        -fx-border-radius: 10px;
+         -fx-border-width: 1px;
+        -fx-cursor: hand;
+         
+    }
+    
+    .inputs{
+        -fx-border-color:black;
+        -fx-border-radius:10px;
+         -fx-background-radius: 10px;
+          -fx-border-width: 1px;
+        -fx-control-inner-background: #ECF0F1;
+         -fx-padding: 0 0 0 5px; 
+         -fx-pref-height: 22px;
+    }
+    
+    .Labels{
+        -fx-border-color:black;
+        -fx-border-radius:10px;
+        -fx-background-radius: 10px;
+        -fx-border-width: 1px;
+        -fx-control-inner-background: #ECF0F1;
+        -fx-padding: 0 0 0 5px;
+        
+    }
+    
+    .textArea{
+         -fx-border-color:black;
+         -fx-border-radius:20px;
+          -fx-border-width: 1px;
+         -fx-control-inner-background: #ECF0F1;
+    }
+    /* css pag inicio y agregar producto*/
+    
+    /* css pag Inventario */
+    .Vbox{
+        
+        -fx-border-color: black;
+        -fx-border-radius: 20px;
+         -fx-border-width: 1px;
+        -fx-padding: 5px 0 0 0;
+        -fx-spacing: 2px;
+    }
+    
+    .Hbox{
+        
+        -fx-padding: 0 2 2 4;
+        -fx-spacing: 40;
+    }
+    
+    .Layoutbtn{
+        
+        -fx-spacing: 4;
+        -fx-padding: 0 0 2 7;
+    }
+    
+    .splitMenubtn{
+        -fx-background-color:#ECF0F1 ;
+        -fx-border-color: black;
+        -fx-border-width: 1px;
+        -fx-border-radius: 5px;
+        -fx-background-radius: 10px;
+        -fx-cursor:hand
+    }
+    /* css pag Inventario */
+    
+    /* css pag pedidos*/
+    
+    .VboxMin{
+        
+        -fx-border-color: black;
+        -fx-border-radius: 20px;
+        -fx-border-width: 1px;
+        -fx-padding: 10 10 10 10;
+        -fx-spacing: 2;
+        
+    }
+    
+    /* css pag pedidos*/
+    
+    
+    
+    
+        
+

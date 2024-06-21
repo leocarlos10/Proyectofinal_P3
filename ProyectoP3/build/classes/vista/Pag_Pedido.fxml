@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="471.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.Pag_PedidoController">
+   <children>
+      <BorderPane layoutX="330.0" layoutY="96.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ECF0F1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Pane prefHeight="115.0" prefWidth="886.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="48.0" layoutY="31.0" prefHeight="67.0" prefWidth="158.0" styleClass="VboxMin" stylesheets="@style.css">
+                     <children>
+                        <Label text="Pedidos totales">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="0" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="212.0" layoutY="31.0" prefHeight="67.0" prefWidth="158.0" styleClass="VboxMin" stylesheets="@style.css">
+                     <children>
+                        <Label text="Ingresos totales">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="0" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="376.0" layoutY="31.0" prefHeight="67.0" prefWidth="158.0" styleClass="VboxMin" stylesheets="@style.css">
+                     <children>
+                        <Label text="Ganancias">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="0" />
+                     </children>
+                  </VBox>
+                  <TextField layoutX="678.0" layoutY="51.0" prefHeight="25.0" prefWidth="134.0" promptText="Buscar pedido" styleClass="inputs" stylesheets="@style.css" />
+                  <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="651.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/lupa.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <ScrollPane fx:id="scrollpane" pannable="true" prefHeight="316.0" prefWidth="716.0" style="-fx-background-color: #ECF0F1;" BorderPane.alignment="CENTER">
+               <content>
+                  <FlowPane fx:id="flowpane" orientation="VERTICAL" prefHeight="333.0" prefWidth="755.0" style="-fx-background-color: #ECF0F1;" />
+               </content>
+            </ScrollPane>
+         </center>
+         <left>
+            <Pane prefHeight="335.0" prefWidth="67.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="335.0" prefWidth="62.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <Pane prefHeight="21.0" prefWidth="886.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
