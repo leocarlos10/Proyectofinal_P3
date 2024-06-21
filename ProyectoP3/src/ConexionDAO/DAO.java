@@ -1,11 +1,14 @@
 package ConexionDAO;
 
+import java.util.List;
+
 public interface DAO<T> {
 
     void create(T entity);
     T read(String id);
     void update(T entity);
     void delete(String id);
+    List<T> get(); // este metodo que agregue fue para obtener una lista de los datos guardados en la base de datos.
 
 }
 

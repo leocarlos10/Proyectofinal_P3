@@ -8,7 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="ProyectoP3.jar" size="1124992" download="eager" />
+=======
+    <jar href="ProyectoP3.jar" size="1459478" download="eager" />
+>>>>>>> 9a2e42d4990dbf19731128aa535b2b8d94ad3719
     <jar href="lib\javafx-swt.jar" size="36882" download="eager" />
     <jar href="lib\javafx.base.jar" size="754161" download="eager" />
     <jar href="lib\javafx.controls.jar" size="2585101" download="eager" />
@@ -17,6 +21,7 @@
     <jar href="lib\javafx.media.jar" size="277256" download="eager" />
     <jar href="lib\javafx.swing.jar" size="89702" download="eager" />
     <jar href="lib\javafx.web.jar" size="727733" download="eager" />
+    <jar href="lib\mysql-connector-j-8.1.0.jar" size="2485905" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="modelo.ProyectoP3"  name="ProyectoP3" />
   <update check="always"/>

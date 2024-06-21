@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexionMySQL implements InterfaceConection {
+public class ConexionMySQL {
 
     private static Connection con;
 
-    private static final String driver = "com.mysql.cj.jdbc.Driver";
+    private static final  String driver = "com.mysql.cj.jdbc.Driver";
     private static final String user = "root";
     private static final String paswword = "";
     private static final String url = "jdbc:mysql://localhost/SGestion_I_P";
@@ -24,7 +24,7 @@ public class ConexionMySQL implements InterfaceConection {
 
     }
 
-    @Override
+    
     public Connection getConnection() {
         return con;
     }
@@ -35,7 +35,7 @@ public class ConexionMySQL implements InterfaceConection {
         }
     }
 
-    @Override
+
     public void disconnect() {
         con = null;
     }

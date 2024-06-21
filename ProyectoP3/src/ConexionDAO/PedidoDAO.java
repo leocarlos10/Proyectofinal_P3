@@ -1,6 +1,7 @@
 package ConexionDAO;
 
 import java.sql.Connection;
+import java.util.List;
 import modelo.Pedido;
 
 public class PedidoDAO implements DAO<Pedido> {
@@ -31,4 +32,11 @@ public class PedidoDAO implements DAO<Pedido> {
     public void delete(String id) {
         
     }
+
+    @Override
+    public List<Pedido> get() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+  
 }
