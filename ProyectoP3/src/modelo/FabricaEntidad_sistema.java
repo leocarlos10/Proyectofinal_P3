@@ -13,10 +13,7 @@ import java.util.List;
  */
 public interface FabricaEntidad_sistema {
     
-    
-    
-  
-   
+    // metodos para la entidad del sistema producto
    void RegistroProducto(
             String nombre,
             String tipo_E_sistema,
@@ -26,7 +23,10 @@ public interface FabricaEntidad_sistema {
             int precio,
             int cantidadUnidades);
    
+   List<Producto> ObtenerProductos();
    
+   
+   // metodos para la entidad del sistema pedidos
    void RegistroPedido(
             String tipo_E_sistema,
             int C_unidades,

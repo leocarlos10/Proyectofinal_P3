@@ -58,9 +58,9 @@
             </Pane>
          </top>
          <center>
-            <ScrollPane pannable="true" prefHeight="316.0" prefWidth="716.0" style="-fx-background-color: #ECF0F1;" BorderPane.alignment="CENTER">
+            <ScrollPane fx:id="scrollpane" pannable="true" prefHeight="316.0" prefWidth="716.0" style="-fx-background-color: #ECF0F1;" BorderPane.alignment="CENTER">
                <content>
-                  <FlowPane orientation="VERTICAL" prefHeight="334.0" prefWidth="759.0" style="-fx-background-color: #ECF0F1;" />
+                  <FlowPane fx:id="flowpane" orientation="VERTICAL" prefHeight="333.0" prefWidth="755.0" style="-fx-background-color: #ECF0F1;" />
                </content>
             </ScrollPane>
          </center>

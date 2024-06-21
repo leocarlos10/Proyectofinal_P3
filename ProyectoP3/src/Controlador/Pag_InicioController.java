@@ -75,6 +75,7 @@ public class Pag_InicioController implements Initializable {
     
      @FXML
     void Event_Inicio(MouseEvent event) {
+         
          Pag_agregar_producto.setVisible(false);
          Pag_Inventario.setVisible(false);
          Pag_Inicio_Imagenes.setVisible(true);

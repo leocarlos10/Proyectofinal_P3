@@ -18,6 +18,8 @@ public class Producto  {
     String coleccion;
     String categoria;
     int cantidadUnidades;
+    
+    public Producto(){}
 
     public Producto( String nombre, int precio, String tipo_E_sistema, String descripcion, String coleccion, String categoria, int cantidadUnidades) {
         this.nombre = nombre;
