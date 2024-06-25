@@ -65,9 +65,13 @@
                   <Button layoutX="115.0" layoutY="433.0" mnemonicParsing="false" onAction="#event_agregarInfoP" prefHeight="25.0" prefWidth="208.0" styleClass="buttons" stylesheets="@style.css" text="agregar  información del proveedor" />
                   <ImageView fx:id="imagen_P" fitHeight="158.0" fitWidth="264.0" layoutX="290.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="info_Producto" layoutX="304.0" layoutY="24.0" prefHeight="17.0" prefWidth="113.0" text="Foto del producto" />
+                  <Button fx:id="btnEliminarImagen" layoutX="304.0" layoutY="236.0" mnemonicParsing="false" onAction="#Event_eliminar_imagen" prefHeight="25.0" prefWidth="123.0" styleClass="buttons" stylesheets="@style.css" text="Eliminar imagen" />
                </children>
             </Pane>
          </center>
+         <left>
+            <Pane prefHeight="471.0" prefWidth="129.0" BorderPane.alignment="CENTER" />
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>

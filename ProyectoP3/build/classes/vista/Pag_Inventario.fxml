@@ -18,11 +18,11 @@
             </FlowPane>
          </content>
       </ScrollPane>
-      <SplitMenuButton layoutX="18.0" layoutY="5.0" mnemonicParsing="false" styleClass="splitMenubtn" stylesheets="@style.css" text="Filtrar categoria">
+      <SplitMenuButton fx:id="filtro" layoutX="18.0" layoutY="5.0" mnemonicParsing="false" styleClass="splitMenubtn" stylesheets="@style.css" text="Filtrar categoria">
         <items>
-            <MenuItem mnemonicParsing="false" text="Sombrero" />
-          <MenuItem mnemonicParsing="false" text="bolso" />
-          <MenuItem mnemonicParsing="false" text="otros accesorios" />
+            <MenuItem mnemonicParsing="false" onAction="#event_filtrar_sombrero" text="Sombrero" />
+          <MenuItem mnemonicParsing="false" onAction="#event_filtrar_bolso" text="bolso" />
+          <MenuItem mnemonicParsing="false" onAction="#event_filtrar_otros" text="otros accesorios" />
         </items>
       </SplitMenuButton>
    </children>

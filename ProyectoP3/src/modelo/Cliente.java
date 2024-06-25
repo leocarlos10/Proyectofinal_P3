@@ -6,16 +6,18 @@ package modelo;
  */
 public class Cliente  {
     
-    private String id;
-    private String nombre;
-    private String direccion;
-    private String tipo_entidad;
-    private String whatsapp;
-    private String ciudad;
-    private String pais;
-    private String correo;  
-    private String metodoPago;
-    private String telefono;
+     String id;
+     String nombre;
+     String direccion;
+     String tipo_entidad;
+     String whatsapp;
+     String ciudad;
+     String pais;
+     String correo;  
+     String metodoPago;
+     String telefono;
+     String id_pedido;
+    
 
     public Cliente( 
             String nombre, 
@@ -25,7 +27,8 @@ public class Cliente  {
             String pais, 
             String correo, 
             String metodoPago, 
-            String telefono
+            String telefono,
+            String id_pedido
     ) {
         
         this.nombre = nombre;
@@ -36,6 +39,7 @@ public class Cliente  {
         this.correo = correo;
         this.metodoPago = metodoPago;
         this.telefono = telefono;
+        this.id_pedido = id_pedido;
     }
 
     public String getId() {
@@ -78,6 +82,11 @@ public class Cliente  {
         return telefono;
     }
 
-    
-    
+    public String getId_pedido() {
+        return id_pedido;
+    }
+
+    public void setId_pedido(String id_pedido) {
+        this.id_pedido = id_pedido;
+    }
 }

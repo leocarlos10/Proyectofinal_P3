@@ -10,7 +10,7 @@ package modelo;
  */
 public class Producto  {
      
-    String id;
+    int id;
     String nombre;
     int precio;
     String tipo_E_sistema;
@@ -18,10 +18,11 @@ public class Producto  {
     String coleccion;
     String categoria;
     int cantidadUnidades;
+    String nombre_imagen;
     
     public Producto(){}
 
-    public Producto( String nombre, int precio, String tipo_E_sistema, String descripcion, String coleccion, String categoria, int cantidadUnidades) {
+    public Producto(String nombre, int precio, String tipo_E_sistema, String descripcion, String coleccion, String categoria, int cantidadUnidades, String nombre_imagen) {
         this.nombre = nombre;
         this.precio = precio;
         this.tipo_E_sistema = tipo_E_sistema;
@@ -29,14 +30,14 @@ public class Producto  {
         this.coleccion = coleccion;
         this.categoria = categoria;
         this.cantidadUnidades = cantidadUnidades;
+        this.nombre_imagen = nombre_imagen;
     }
 
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -96,21 +97,11 @@ public class Producto  {
         this.cantidadUnidades = cantidadUnidades;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", tipo_E_sistema=" + tipo_E_sistema + ", descripcion=" + descripcion + ", coleccion=" + coleccion + ", categoria=" + categoria + ", cantidadUnidades=" + cantidadUnidades + '}';
+    public String getNombre_imagen() {
+        return nombre_imagen;
     }
 
-   
-
-    
-    
-
-   
-    
-    
-
-    
-    
-    
+    public void setNombre_imagen(String nombre_imagen) {
+        this.nombre_imagen = nombre_imagen;
+    }
 }

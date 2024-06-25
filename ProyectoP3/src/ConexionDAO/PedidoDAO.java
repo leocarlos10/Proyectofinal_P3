@@ -21,18 +21,20 @@ public class PedidoDAO implements DAO<Pedido> {
 
             PreparedStatement statement;
 
-            String query = "INSERT INTO Pedido (tipo_E_sistema, C_unidades, fecha) VALUES (?, ?, ?)";
+            String query = "INSERT INTO pedido ( id, tipo_E_sistema, C_unidades, fecha, id_producto) VALUES (?,?,?,?,?)";
             statement = connection.prepareStatement(query);
 
-            statement.setString(1, pedido.getTipo_E_sistema());
-            statement.setInt(2, pedido.getC_unidades());
-            statement.setDate(3, java.sql.Date.valueOf(pedido.getFecha()));
+            statement.setString(1, pedido.getId());
+            statement.setString(2, pedido.getTipo_E_sistema());
+            statement.setInt(3, pedido.getC_unidades());
+            statement.setDate(4, java.sql.Date.valueOf(pedido.getFecha()));
+            statement.setInt(5, pedido.getId_producto());
 
             statement.executeUpdate();
             statement.close();
 
         } catch (SQLException e) {
-            System.out.println("Error al insertar producto: " + e.getMessage());
+            System.out.println("Error al insertar pedido: " + e);
         }
 
     }
@@ -49,7 +51,7 @@ public class PedidoDAO implements DAO<Pedido> {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(int id) {
 
     }
 

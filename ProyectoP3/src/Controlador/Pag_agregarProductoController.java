@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -50,6 +51,8 @@ public class Pag_agregarProductoController implements Initializable {
     }
     // varaible global para ayudar a nombrar las imagenes
     int i = obtenerIterador();
+    String nombre_imagen;
+    File imagen;
     
    
      @FXML
@@ -79,10 +82,14 @@ public class Pag_agregarProductoController implements Initializable {
     @FXML
     private Label info_Producto;
     
+       @FXML
+    private Button btnEliminarImagen;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         comboCategoria.getItems().addAll("Sombrero","Bolso","Otros");
         info_Producto.setVisible(false);
+        btnEliminarImagen.setVisible(false);
         
         // le agrego un titulo al filechooser
         fileC.setTitle("Selecciona una imagen");
@@ -101,6 +108,11 @@ public class Pag_agregarProductoController implements Initializable {
         
         FabricaEntidad_sistema fabrica = new FabricaEntidad_sistema2();
         try{
+             // guardamos la foto
+            if(imagen != null){
+                GuardarFotoP();
+            }
+            
             fabrica.RegistroProducto(
                 textnombre.getText(), 
                 "producto", 
@@ -108,7 +120,10 @@ public class Pag_agregarProductoController implements Initializable {
                 textColeccion.getText(), 
                 comboCategoria.getValue(), 
                 Integer.parseInt(textPrecio.getText()),
-                Integer.parseInt(textCantidadunidades.getText()));
+                Integer.parseInt(textCantidadunidades.getText()),
+                nombre_imagen);
+            
+           
         }catch(NumberFormatException e){
             
         Alert alerta = new Alert(Alert.AlertType.ERROR);
@@ -127,7 +142,6 @@ public class Pag_agregarProductoController implements Initializable {
         textCantidadunidades.setText("");
         textnombre.requestFocus();
         imagen_P.setImage(null);
-        
         
     }
     
@@ -156,13 +170,26 @@ public class Pag_agregarProductoController implements Initializable {
         
         // hacemos visible el LabelInfo
         info_Producto.setVisible(true);
+        // hacemos visible el boton eliminar imagen
+        btnEliminarImagen.setVisible(true);
          // abrimos una ventana para que el usuario seleccione la imagen
         File file = fileC.showOpenDialog(new Stage());
         // verificamos si el usuario subio la imagen
         if (file != null) {
             Image image = new Image(file.toURI().toString());
             imagen_P.setImage(image);
+            imagen = file;
         }
+    }
+    
+    
+      @FXML
+    void Event_eliminar_imagen(ActionEvent event) {
+        
+        imagen_P.setImage(null);
+    }
+    
+    private void GuardarFotoP(){
         
         /* Definir la carpeta de destino dentro del proyecto
         //System.getProperty("user.dir") nos devulve la ruta de la carpeta del proyceto
@@ -173,18 +200,18 @@ public class Pag_agregarProductoController implements Initializable {
             if (!destinationDir.exists()) {
                 destinationDir.mkdirs();
             }
-             
+             nombre_imagen = "imagen"+i+".jpg";
+            
             // creo el archivo de destino con el nombre del producto.
-            File destinationFile = new File(destinationDir, "imagen"+i+".jpg");
+            File destinationFile = new File(destinationDir,nombre_imagen );
             i++;
             //guardamos el iterador que nombra las imagenes
             guardar_iterador();
         try {
-            copyFile(file, destinationFile);
+            copyFile(imagen, destinationFile);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e);
         } 
-
     }
     
     // este metodo copia la imagen de la carpeta donde esta hacia la carpeta de imagen_productos
@@ -227,5 +254,7 @@ public class Pag_agregarProductoController implements Initializable {
         }
 
         return iterador;
-    }  
+    }
+    
+   
 }

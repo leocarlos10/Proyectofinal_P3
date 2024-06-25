@@ -22,13 +22,16 @@
                   </ImageView>
                   <Button fx:id="btn_agregarproducto" layoutX="191.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_agregar_producto" prefHeight="25.0" prefWidth="112.0" styleClass="button_header" stylesheets="@style.css" text="Agregar Producto">
                   </Button>
-                  <Button layoutX="327.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_Inventario" styleClass="button_header" stylesheets="@style.css" text="Inventario" />
-                  <Button layoutX="417.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_mostrarPedidos" styleClass="button_header" stylesheets="@style.css" text="Pedidos" />
+                  <Button layoutX="321.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_Inventario" styleClass="button_header" stylesheets="@style.css" text="Inventario" />
+                  <Button layoutX="405.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_mostrarPedidos" styleClass="button_header" stylesheets="@style.css" text="Pedidos" />
+                  <Button fx:id="btnHClientes" layoutX="482.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_MostrarHistorial" styleClass="button_header" stylesheets="@style.css" text="Historial clientes" />
+                  <Button fx:id="btnHVenta" layoutX="604.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_MostrarHistorial" styleClass="button_header" stylesheets="@style.css" text="Historial venta" />
+                  <Button fx:id="btnHProveedores" layoutX="715.0" layoutY="33.0" mnemonicParsing="false" onAction="#event_MostrarHistorial" styleClass="button_header" stylesheets="@style.css" text="Historial proveedores" />
                </children>
             </Pane>
          </top>
          <center>
-            <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #ECF0F1;" BorderPane.alignment="CENTER">
+            <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>

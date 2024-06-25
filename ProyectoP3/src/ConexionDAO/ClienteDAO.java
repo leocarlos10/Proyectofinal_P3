@@ -20,18 +20,19 @@ public class ClienteDAO implements DAO<Cliente> {
 
             PreparedStatement statement;
 
-            String query = "INSERT INTO Cliente (nombre, direccion, tipo_entidad, whatsapp, ciudad, pais, correo, metodoPago, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO Cliente (nombre, direccion, tipo_entidad, whatsapp, ciudad, pais, correo, metodoPago, telefono, id_pedido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
             statement = connection.prepareStatement(query);
 
             statement.setString(1, cliente.getNombre());
             statement.setString(2, cliente.getDireccion());
             statement.setString(3, cliente.getTipo_entidad());
-            statement.setString(3, cliente.getWhatsapp());
-            statement.setString(3, cliente.getCiudad());
-            statement.setString(3, cliente.getPais());
-            statement.setString(3, cliente.getCorreo());
-            statement.setString(3, cliente.getMetodoPago());
-            statement.setString(3, cliente.getTelefono());
+            statement.setString(4, cliente.getWhatsapp());
+            statement.setString(5, cliente.getCiudad());
+            statement.setString(6, cliente.getPais());
+            statement.setString(7, cliente.getCorreo());
+            statement.setString(8, cliente.getMetodoPago());
+            statement.setString(9, cliente.getTelefono());
+            statement.setString(10, cliente.getId_pedido());
                   
 
             statement.executeUpdate();
@@ -56,7 +57,7 @@ public class ClienteDAO implements DAO<Cliente> {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(int id) {
         
         
     }

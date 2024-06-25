@@ -23,15 +23,26 @@ public class Pag_InicioController implements Initializable {
 
     @FXML
     private Button btn_agregarproducto;
+    
+     @FXML
+    private Button btnHClientes;
+
+    @FXML
+    private Button btnHProveedores;
+
+    @FXML
+    private Button btnHVenta;
 
     @FXML
     private StackPane stackPane;
 
-    AnchorPane Pag_Inventario, Pag_Inicio_Imagenes, Pag_agregar_producto, Pag_Pedido;
+    AnchorPane Pag_Inventario, Pag_Inicio_Imagenes, Pag_agregar_producto, Pag_Pedido,Pag_historiales;
 
     Pag_InventarioController controllerInventario;
 
     Pag_PedidoController controllerPedido;
+    
+    Pag_historialesController controller_historial;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -41,7 +52,8 @@ public class Pag_InicioController implements Initializable {
             Pag_Inicio_Imagenes = cargarVentanas("/vista/Pag_Inicio_Imagenes.fxml");
             Pag_agregar_producto = cargarVentanas("/vista/Pag_agregarProducto.fxml");
             Pag_Pedido = cargarVentanas("/vista/Pag_Pedido.fxml");
-            stackPane.getChildren().addAll(Pag_Inicio_Imagenes, Pag_agregar_producto, Pag_Inventario, Pag_Pedido);
+            Pag_historiales = cargarVentanas("/vista/Pag_historiales.fxml");
+            stackPane.getChildren().addAll(Pag_Inicio_Imagenes, Pag_agregar_producto, Pag_Inventario, Pag_Pedido,Pag_historiales);
 
         } catch (Exception e) {
             System.out.println("error en el cambio de ventana" + e);
@@ -52,6 +64,7 @@ public class Pag_InicioController implements Initializable {
         Pag_Inventario.setVisible(false);
         Pag_Inicio_Imagenes.setVisible(true);
         Pag_Pedido.setVisible(false);
+        Pag_historiales.setVisible(false);
     }
 
     @FXML
@@ -60,17 +73,22 @@ public class Pag_InicioController implements Initializable {
         Pag_Inventario.setVisible(false);
         Pag_Inicio_Imagenes.setVisible(false);
         Pag_Pedido.setVisible(false);
+         Pag_historiales.setVisible(false);
     }
 
+    
+    
     @FXML
     void event_Inventario(ActionEvent event) {
 
         Pag_agregar_producto.setVisible(false);
         Pag_Inventario.setVisible(true);
         // necesito ejecuatar el metodo cargarProductos cada que cambie a la ventana inventario
+        // esto con el objetivo de actualizar el inventario en caso de cualquier modificacion en los productos
         controllerInventario.cargarproductos();
         Pag_Inicio_Imagenes.setVisible(false);
         Pag_Pedido.setVisible(false);
+         Pag_historiales.setVisible(false);
 
     }
 
@@ -81,6 +99,7 @@ public class Pag_InicioController implements Initializable {
         Pag_Inventario.setVisible(false);
         Pag_Inicio_Imagenes.setVisible(true);
         Pag_Pedido.setVisible(false);
+        Pag_historiales.setVisible(false);
 
     }
 
@@ -91,6 +110,33 @@ public class Pag_InicioController implements Initializable {
         Pag_Inventario.setVisible(false);
         Pag_Inicio_Imagenes.setVisible(false);
         Pag_Pedido.setVisible(true);
+        Pag_historiales.setVisible(false);
+    }
+    
+   
+    
+     @FXML
+    void event_MostrarHistorial(ActionEvent event) {
+        
+         if (event.getSource().equals(btnHClientes)) {
+             VisibilidadVentanasH();
+             controller_historial.agregar_info_HClientes();
+         } else if (event.getSource().equals(btnHVenta)) {
+             VisibilidadVentanasH();
+             controller_historial.agregar_info_Hventa();
+         } else if (event.getSource().equals(btnHProveedores)) {
+             VisibilidadVentanasH();
+             controller_historial.agregar_info_HProveedores();
+         }
+    }
+    
+    public void VisibilidadVentanasH(){
+        
+            Pag_agregar_producto.setVisible(false);
+            Pag_Inventario.setVisible(false);
+            Pag_Inicio_Imagenes.setVisible(false);
+            Pag_Pedido.setVisible(false);
+            Pag_historiales.setVisible(true);
     }
 
     /*
@@ -100,13 +146,15 @@ public class Pag_InicioController implements Initializable {
      */
     private AnchorPane cargarVentanas(String url) throws Exception {
         FXMLLoader Loader = new FXMLLoader(getClass().getResource(url));
-        AnchorPane pane = Loader.load();
+        AnchorPane anchorPane = Loader.load();
         if (url.equalsIgnoreCase("/vista/Pag_Inventario.fxml")) {
             controllerInventario = Loader.getController();
         } else if (url.equalsIgnoreCase("/vista/Pag_Pedido.fxml")) {
             controllerPedido = Loader.getController();
+        }else if(url.equalsIgnoreCase("/vista/Pag_historiales.fxml")) {
+            controller_historial = Loader.getController();
         }
-        return pane;
+        return anchorPane;
     }
 
 }

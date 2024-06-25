@@ -9,8 +9,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import modelo.FabricaEntidad;
+import modelo.FabricaEntidad2;
 
 /**
  * FXML Controller class
@@ -43,14 +46,30 @@ public class Pag_agregar_proveedorController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }   
     
     @FXML
     void event_guardar(ActionEvent event) {
+
+        FabricaEntidad fabrica = new FabricaEntidad2();
+
+        try {
+            fabrica.RegsitroProveedor(
+                    textnombre.getText(),
+                    textDireccion.getText(),
+                    "Proveedor",
+                    textDocumento.getText(),
+                    textTipoProducto.getText(),
+                    Integer.parseInt(textPrecio.getText()));
+
+        } catch (NumberFormatException e) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("SUGERENCIA");
+            alerta.setContentText("Por favor revise que ningun campo este vacio");
+            alerta.show();
+        }
         
-        // logica para guardar el proveedor en la lista
-        // luego cerremos la ventana.
         stage.close();
 
     }

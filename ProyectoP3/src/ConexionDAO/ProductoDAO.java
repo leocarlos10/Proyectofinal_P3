@@ -1,5 +1,6 @@
 package ConexionDAO;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +31,7 @@ public class ProductoDAO implements DAO<Producto> {
             
             PreparedStatement statement;
 
-            String query = "INSERT INTO producto (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria, cantidadUnidades) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO producto (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria, cantidadUnidades, nombre_imagenes) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
 
             
             statement = connection.prepareStatement(query);
@@ -41,8 +42,8 @@ public class ProductoDAO implements DAO<Producto> {
             statement.setString(4, producto.getDescripcion());
             statement.setString(5, producto.getColeccion());
             statement.setString(6, producto.getCategoria());
-
             statement.setInt(7, producto.getCantidadUnidades());
+            statement.setString(8, producto.getNombre_imagen());
 
             statement.executeUpdate();
             statement.close();
@@ -67,8 +68,7 @@ public class ProductoDAO implements DAO<Producto> {
             statement.setString(1, id);
             ResultSet resultSet = statement.executeQuery();
             
-           
-            connection.close();
+            statement.close();
             
             
         } catch (Exception e) {
@@ -82,13 +82,64 @@ public class ProductoDAO implements DAO<Producto> {
     @Override
     public void update(Producto producto) {
 
-    }
+        try {
 
-    @Override
-    public void delete(String id) {
+            PreparedStatement statement;
+            String query = "UPDATE `producto` SET "
+                    + "`id` = ?,"
+                    + "`nombre` = ?, "
+                    + "`precio` = ?, "
+                    + "`tipo_E_sistema` = ?, "
+                    + "`descripcion` = ?, "
+                    + "`coleccion` = ?, "
+                    + "`categoria` = ?, "
+                    + "`cantidadUnidades` = ?, "
+                    + "`nombre_imagenes` = ? WHERE `producto`.`id` = ? ";
+
+            statement = connection.prepareStatement(query);
+
+            statement.setInt(1, producto.getId());
+            statement.setString(2, producto.getNombre());
+            statement.setInt(3, producto.getPrecio());
+            statement.setString(4, producto.getTipo_E_sistema());
+            statement.setString(5, producto.getDescripcion());
+            statement.setString(6, producto.getColeccion());
+            statement.setString(7, producto.getCategoria());
+            statement.setInt(8, producto.getCantidadUnidades());
+            statement.setString(9, producto.getNombre_imagen());
+            statement.setInt(10, producto.getId());
+
+            statement.executeUpdate();
+
+            statement.close();
+
+        } catch (SQLException e) {
+
+            System.out.println("error al actualizar la tabla producto" + e);
+        }
 
     }
     
+    
+
+    @Override
+    public void delete(int id) {
+        
+        try {
+            PreparedStatement statement;
+            String query = "DELETE FROM producto WHERE id = ?";
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.execute();
+            
+            
+            statement.close();
+            
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar producto" + e.getMessage());
+        }
+    }
+     
     /*
     * Este metodo se encarga de traer todos los productos 
       de la base de datos
@@ -113,7 +164,7 @@ public class ProductoDAO implements DAO<Producto> {
             while(resultado.next()){
                 // creamos el objeto
                 Producto producto = new Producto();
-                producto.setId(resultado.getString("id"));
+                producto.setId(resultado.getInt("id"));
                 producto.setNombre(resultado.getString("nombre"));
                 producto.setPrecio(resultado.getInt("precio"));
                 producto.setTipo_E_sistema(resultado.getString("tipo_E_sistema"));
@@ -121,10 +172,14 @@ public class ProductoDAO implements DAO<Producto> {
                 producto.setColeccion(resultado.getString("coleccion"));
                 producto.setCategoria(resultado.getString("categoria"));
                 producto.setCantidadUnidades(resultado.getInt("cantidadUnidades"));
+                producto.setNombre_imagen(resultado.getString("nombre_imagenes"));
                 
                 // guardamos el objeto en la lista
                 listaPro.add(producto);
             }
+            
+            
+            statement.close();
         
         }catch(Exception e){
             System.out.println("Error al traer los datos de la base de datos. "+ e);
@@ -132,9 +187,7 @@ public class ProductoDAO implements DAO<Producto> {
         
         // retornamos la lista
         return listaPro;
-    }
-
-    
+    } 
 }
 
 

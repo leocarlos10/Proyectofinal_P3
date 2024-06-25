@@ -4,16 +4,20 @@
  */
 package Controlador;
 
+import ConexionDAO.ConexionMySQL;
+import ConexionDAO.DAO;
+import ConexionDAO.ProductoDAO;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,9 +27,11 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,9 +41,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
-import modelo.Estructura_Datos.Lista_Productos;
-import modelo.FabricaEntidad2;
 import modelo.FabricaEntidad_sistema;
 import modelo.FabricaEntidad_sistema2;
 import modelo.Producto;
@@ -50,12 +53,21 @@ import modelo.Producto;
 public class Pag_InventarioController implements Initializable {
    
     FabricaEntidad_sistema fabrica;
+    ConexionMySQL conexion;
+    DAO<Producto> dao;
+    Producto producto;
 
     @FXML
     private FlowPane flowPane;
 
     @FXML
     private ScrollPane scrollPane;
+
+    ImageView imagen;
+
+    @FXML
+    private SplitMenuButton filtro;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -64,15 +76,19 @@ public class Pag_InventarioController implements Initializable {
         flowPane.prefHeightProperty().bind(scrollPane.heightProperty());
         // configuramos la orientacion del flowpane
         flowPane.setOrientation(Orientation.HORIZONTAL);
-         /* 
+        /* 
          fabricaEntidad_sistema es una clase que tiene un metodo
          obtenerProductos() que retorna la lista de productos 
          que fue extraida de la base de datos.
          */
         fabrica = new FabricaEntidad_sistema2();
-        if(flowPane.getChildren().isEmpty()){
-             cargarproductos();
+        if (flowPane.getChildren().isEmpty()) {
+            cargarproductos();
         }
+
+        // agrego el evento al SplitMenuButton.
+        event_cargar_todo();
+        
     }
     
     public void cargarproductos(){
@@ -85,18 +101,14 @@ public class Pag_InventarioController implements Initializable {
 
         for (int i = 0; i < lista.size(); i++) {
             loadproductos(
-                    "src/imagenes/imagen2.jpg",
-                    lista.get(i).getNombre(),
-                    String.valueOf(lista.get(i).getPrecio()),
-                    lista.get(i).getCategoria(),
-                    String.valueOf(lista.get(i).getCantidadUnidades()),
-                    lista.get(i)
-            );
+                    "src/imagenes_productos/"+lista.get(i).getNombre_imagen(),
+                    lista.get(i));
         }
     }
 
-    private void loadproductos(String url_Imagen, String nombre, String precio, String Categoria, String CUnidadades, Producto producto) {
-
+    private void loadproductos(String url_Imagen, Producto producto) {
+        
+       
         // creamos un nuevo VBox
         VBox newVBox = new VBox();
         //le agregamos el estilo
@@ -104,15 +116,15 @@ public class Pag_InventarioController implements Initializable {
         // alineamos los elementos
         newVBox.setAlignment(Pos.TOP_CENTER);
         //dimensiones del VBox
-        newVBox.setPrefWidth(245);
-        newVBox.setPrefHeight(239);
+        newVBox.setPrefWidth(249);
+        newVBox.setPrefHeight(241);
 
         // agregamos el nombre
-        Label Lnombre = new Label(nombre);
+        Label Lnombre = new Label(producto.getNombre());
         Dimensiones_EstiloLabels(Lnombre);
 
         //creamos la imagen
-        ImageView imagen = new ImageView();
+        imagen = new ImageView();
         try {
             Image image = new Image(new FileInputStream(url_Imagen));
             imagen.setImage(image);
@@ -120,7 +132,7 @@ public class Pag_InventarioController implements Initializable {
             imagen.setFitHeight(122);
 
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "imagen no encontrada");
+            System.out.println("imagen no encontrada");
         }
 
         // layaout gridPane para agregar la informacion
@@ -153,13 +165,13 @@ public class Pag_InventarioController implements Initializable {
         layout.add(LCantidad, 2, 0);
 
         // textField para mostrar informacion y editar informacion
-        TextField Lprecio2 = new TextField(precio);
+        TextField Lprecio2 = new TextField(String.valueOf(producto.getPrecio()));
         Dimensiones_EstiloTextfield(Lprecio2);
-        TextField Lcategoria2 = new TextField(Categoria);
+        TextField Lcategoria2 = new TextField(producto.getCategoria());
         // El textfield Lcoleccion2 lleva un estilo especifico
         Lcategoria2.setPrefSize(100, 17);
         Lcategoria2.getStyleClass().add("inputs");
-        TextField LCantidad2 = new TextField(CUnidadades);
+        TextField LCantidad2 = new TextField(String.valueOf(producto.getCantidadUnidades()));
         Dimensiones_EstiloTextfield(LCantidad2);
 
         // agreamos los textfield al gridpane
@@ -173,25 +185,52 @@ public class Pag_InventarioController implements Initializable {
         Button AgregarP = new Button("Agregar pedido");
         AgregarP.getStyleClass().add("buttons");
         AgregarP.setOnAction((ActionEvent event) -> {
-            try {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/Pag_AgregarPedido.fxml"));
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                Pag_AgregarPedidoController controller = loader.getController();
-                controller.setElementos(url_Imagen, producto, stage);
-                stage.show();
+            if (!(producto.getCantidadUnidades() == 0)) {
+                try {
 
-            } catch (IOException ex) {
-                System.out.println("error " + ex);
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/Pag_AgregarPedido.fxml"));
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    Pag_AgregarPedidoController controller = loader.getController();
+                    controller.setElementos(url_Imagen, producto, stage, LCantidad2);
+                    stage.show();
+
+                } catch (IOException ex) {
+                    System.out.println("error " + ex);
+                }
+
+            } else {
+
+                Alert alerta = new Alert(Alert.AlertType.WARNING);
+                alerta.setTitle("SUGERENCIA");
+                alerta.setContentText("Producto Agotado");
+                alerta.show();
             }
+
         });
         Button Eliminar = new Button("Eliminar ");
         Eliminar.getStyleClass().add("buttons");
         Eliminar.setOnAction(event -> {
-            JOptionPane.showMessageDialog(null, "pedido eliminado");
+            // realizamos la conexion 
+            conexion = new ConexionMySQL();
+            // instanciamos la clase ProductoDao
+            dao = new ProductoDAO(conexion.getConnection());
+            // eliminamos el producto de la DB
+            dao.delete(producto.getId());
+
+            cerrarConexion();
+            // eliminamos la imagen del fichero
+            liberar_recursos();
+            cargarproductos();
+            if (eliminarImagen_Producto(producto.getNombre_imagen())) {
+                System.out.println("La imagen se elimino corectamente");
+            } else {
+                System.out.println("La imagen no se elimino.");
+            }
+
         });
 
         Button Editar = new Button("Editar");
@@ -200,14 +239,17 @@ public class Pag_InventarioController implements Initializable {
 
             String Estado = Editar.getText();
             if (Estado.equalsIgnoreCase("editar")) {
-                Lcategoria2.setText("");
                 Lprecio2.setText("");
                 LCantidad2.setText("");
-                Lcategoria2.requestFocus();
+                Lprecio2.requestFocus();
                 Editar.setText("Guardar");
             } else if (Estado.equalsIgnoreCase("guardar")) {
-                // agregar logica para actualizar los datos
-                JOptionPane.showMessageDialog(null, "datos actualizados");
+                producto.setPrecio(Integer.parseInt(Lprecio2.getText()));
+                producto.setCantidadUnidades(Integer.parseInt(LCantidad2.getText()));
+                conexion = new ConexionMySQL();
+                dao = new ProductoDAO(conexion.getConnection());
+                dao.update(producto);
+                cerrarConexion();
                 Editar.setText("Editar");
             }
         });
@@ -218,6 +260,36 @@ public class Pag_InventarioController implements Initializable {
         newVBox.getChildren().addAll(Lnombre, imagen, layout, layoutbtn);
         // agregamos el nuevo elemento al flowpane
         flowPane.getChildren().add(newVBox);
+        
+         // por ultimo seteo el producto para poder luego
+        // realizar los editar y guardar individualmente
+        this.producto = producto;
+    }
+
+    private boolean eliminarImagen_Producto(String nombreImagen) {
+
+        String rutaimagen = "src/imagenes_productos/" + nombreImagen;
+        File imagen2 = new File(rutaimagen);
+
+        if (!imagen2.exists()) {
+            System.out.println("El archivo no existe: " + rutaimagen);
+        }
+
+        if (!imagen2.isFile()) {
+            System.out.println("No es un archivo válido: " + rutaimagen);
+        }
+
+        if (!imagen2.canWrite()) {
+            System.out.println("No se tienen permisos para eliminar el archivo: " + rutaimagen);
+        }
+
+        return imagen2.delete();
+    }
+
+    private void liberar_recursos() {
+        imagen.setImage(null);
+        imagen = null;
+
     }
 
     private void Dimensiones_EstiloTextfield(TextField text) {
@@ -236,5 +308,74 @@ public class Pag_InventarioController implements Initializable {
         // estilo
         label.getStyleClass().add("Labels");
 
+    }
+
+    private void cerrarConexion() {
+
+        try {
+            conexion.cerrar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Pag_InventarioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    // eventos para filtrar
+    @FXML
+    void event_filtrar_bolso(ActionEvent event) {
+
+        flowPane.getChildren().clear();
+        List<Producto> lista = fabrica.ObtenerProductos();
+
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getCategoria().equalsIgnoreCase("Bolso")) {
+                loadproductos(
+                        "src/imagenes_productos/" + lista.get(i).getNombre_imagen(),
+                        lista.get(i));
+            }
+        }
+    }
+
+    @FXML
+    void event_filtrar_otros(ActionEvent event) {
+
+        flowPane.getChildren().clear();
+        List<Producto> lista = fabrica.ObtenerProductos();
+
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getCategoria().equalsIgnoreCase("Otros")) {
+                loadproductos(
+                        "src/imagenes_productos/" + lista.get(i).getNombre_imagen(),
+                        lista.get(i));
+            }
+        }
+
+    }
+
+    @FXML
+    void event_filtrar_sombrero(ActionEvent event) {
+
+        flowPane.getChildren().clear();
+        List<Producto> lista = fabrica.ObtenerProductos();
+
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getCategoria().equalsIgnoreCase("Sombrero")) {
+                loadproductos(
+                        "src/imagenes_productos/" + lista.get(i).getNombre_imagen(),
+                        lista.get(i));
+            }
+        }
+    }
+
+    /*
+    Cuando el SplitMenuButton se desenfoca se deben cargar todos 
+    los productos de nuevo en el flowpane.
+     */
+    public void event_cargar_todo() {
+
+        filtro.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                cargarproductos();
+            }
+        });
     }
 }

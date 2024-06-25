@@ -21,16 +21,19 @@ public interface FabricaEntidad_sistema {
             String coleccion,
             String categoria,
             int precio,
-            int cantidadUnidades);
+            int cantidadUnidades,
+            String nombre_imagen);
    
    List<Producto> ObtenerProductos();
    
    
    // metodos para la entidad del sistema pedidos
    void RegistroPedido(
+            String id,
             String tipo_E_sistema,
             int C_unidades,
-            LocalDate fecha
+            LocalDate fecha,
+            int id_producto
    );
     
 }

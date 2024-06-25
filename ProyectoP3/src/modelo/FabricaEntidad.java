@@ -22,14 +22,16 @@ public interface FabricaEntidad {
             String pais,
             String correo,
             String metodoPago,
-            String telefono);
+            String telefono,
+            String id_pedido);
     
     void RegsitroProveedor(
             String nombre,
             String direccion,
             String tipo_entidad,
             String documento,
-            String tipo_producto
+            String tipo_producto,
+            int precio_producto
     );
     
 }

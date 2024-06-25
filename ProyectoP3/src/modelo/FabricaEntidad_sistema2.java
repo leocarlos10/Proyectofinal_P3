@@ -12,8 +12,7 @@ import ConexionDAO.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.control.Alert;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -23,6 +22,7 @@ public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema {
 
     private ConexionMySQL conexion;
     private DAO<Producto> daoPro;
+    private DAO<Pedido> daoPed;
 
     @Override
     public void RegistroProducto(
@@ -32,7 +32,8 @@ public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema {
             String coleccion,
             String categoria,
             int precio,
-            int cantidadUnidades) {
+            int cantidadUnidades,
+            String nombre_imagen) {
 
         try {
             // realizamos la conexion
@@ -40,7 +41,7 @@ public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema {
             // instanciamos la clase que necesitamso para guardar el producto
             daoPro = new ProductoDAO(conexion.getConnection());
             // ejecutamos el metodo que crea el producto.
-            daoPro.create(new Producto(nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria, cantidadUnidades));
+            daoPro.create(new Producto(nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria, cantidadUnidades,nombre_imagen));
             // cerramos la conexion.
             conexion.cerrar();
 
@@ -78,13 +79,22 @@ public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema {
 
     @Override
     public void RegistroPedido(
+            String id,
             String tipo_E_sistema,
             int C_unidades,
-            LocalDate fecha
+            LocalDate fecha,
+            int id_producto
     ) {
 
-        ListaPedidos listapedidos = new ListaPedidos();
-        listapedidos.agregarPedido(new Pedido(tipo_E_sistema, C_unidades, fecha));
+        try {
+            conexion = new ConexionMySQL();
+            daoPed = new PedidoDAO(conexion.getConnection());
+            daoPed.create(new Pedido(id, tipo_E_sistema, C_unidades, fecha, id_producto));
+            conexion.cerrar();
+        } catch (SQLException ex) {
+            Logger.getLogger(FabricaEntidad_sistema2.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("error"+ex.getMessage());
+        }
 
     }
 }
