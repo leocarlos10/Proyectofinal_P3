@@ -74,6 +74,33 @@ public class PedidoDAO implements DAO<Pedido> {
     @Override
     public void update(Pedido pedido) {
 
+        try {
+            PreparedStatement statement;
+            String query = "UPDATE pedido SET "
+                + "id = ?,"
+                + "tipo_E_sistema = ?,"
+                + "C_unidades = ?,"
+                + "fecha = ? ,"
+                + "id_producto = ?"
+                + "WHERE = pedido.id = ?"
+            ;
+
+            statement = connection.prepareStatement(query);
+
+            statement.setString(1, pedido.getId());
+            statement.setString(2, pedido.getTipo_E_sistema());
+            statement.setInt(3, pedido.getC_unidades());
+            statement.setDate(4, java.sql.Date.valueOf(pedido.getFecha()));
+            statement.setInt(5, pedido.getId_producto());
+            statement.setString(6, pedido.getId());
+
+            statement.executeUpdate();
+            statement.close();
+
+
+        } catch (Exception e) {
+            System.out.println("Error al actualizar el producto ");
+        }
     }
 
     @Override
