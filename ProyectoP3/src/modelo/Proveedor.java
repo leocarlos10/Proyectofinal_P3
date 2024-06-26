@@ -18,6 +18,8 @@ public class Proveedor  {
     String tipo_producto;
     int precio_producto;
 
+    public Proveedor(){}
+    
     public Proveedor( 
             String nombre, 
             String direccion, 
