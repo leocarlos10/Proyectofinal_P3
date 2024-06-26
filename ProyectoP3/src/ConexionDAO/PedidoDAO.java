@@ -25,7 +25,7 @@ public class PedidoDAO implements DAO<Pedido> {
 
             PreparedStatement statement;
 
-            String query = "INSERT INTO pedido ( id, tipo_E_sistema, C_unidades, fecha, id_producto) VALUES (?,?,?,?,?)";
+            String query = "INSERT INTO pedido ( id, tipo_E_sistema, C_unidades, fecha, id_producto,id_cliente) VALUES (?,?,?,?,?,?)";
             statement = connection.prepareStatement(query);
 
             statement.setString(1, pedido.getId());
@@ -33,6 +33,7 @@ public class PedidoDAO implements DAO<Pedido> {
             statement.setInt(3, pedido.getC_unidades());
             statement.setDate(4, java.sql.Date.valueOf(pedido.getFecha()));
             statement.setInt(5, pedido.getId_producto());
+            statement.setInt(6, pedido.getId_cliente());
 
             statement.executeUpdate();
             statement.close();
@@ -58,7 +59,8 @@ public class PedidoDAO implements DAO<Pedido> {
                 pedido.setTipo_E_sistema(resultSet.getString("tipo_E_sistema"));
                 pedido.setC_unidades(resultSet.getInt("C_unidades"));
                 pedido.setFecha(resultSet.getDate("fecha").toLocalDate());
-                pedido.setId(resultSet.getString("id_producto"));
+                pedido.setId_producto(resultSet.getInt("id_producto"));
+                pedido.setId_cliente(resultSet.getInt("id_cliente"));
 
             }
             

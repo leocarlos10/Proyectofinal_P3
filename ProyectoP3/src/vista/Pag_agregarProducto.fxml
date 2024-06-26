@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -39,14 +40,18 @@
          <center>
             <Pane fx:id="Pane" prefHeight="505.0" prefWidth="530.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutX="14.0" layoutY="8.0" prefHeight="415.0" prefWidth="258.0" spacing="10.0">
+                  <VBox layoutX="14.0" layoutY="8.0" prefHeight="415.0" prefWidth="224.0" spacing="10.0">
                      <children>
                         <Label prefHeight="17.0" prefWidth="68.0" text="Nombre" />
                         <TextField fx:id="textnombre" styleClass="inputs" stylesheets="@style.css" />
                         <Label prefHeight="17.0" prefWidth="69.0" text="Colección" />
                         <TextField fx:id="textColeccion" styleClass="inputs" stylesheets="@style.css" />
                         <Label prefHeight="17.0" prefWidth="94.0" text="Descripción" />
-                        <TextArea fx:id="textDescripcion" prefHeight="67.0" prefWidth="304.0" styleClass="inputs" stylesheets="@style.css" />
+                        <TextArea fx:id="textDescripcion" prefHeight="67.0" prefWidth="304.0" stylesheets="@style.css">
+                           <styleClass>
+                              <String fx:value="textArea" />
+                              <String fx:value="text-area" />
+                           </styleClass></TextArea>
                         <Label prefHeight="17.0" prefWidth="46.0" text="Precio" />
                         <TextField fx:id="textPrecio" styleClass="inputs" stylesheets="@style.css" />
                         <Label prefHeight="17.0" prefWidth="131.0" text="Cantidad en unidades" />

@@ -109,7 +109,6 @@ public class Pag_InventarioController implements Initializable {
 
     private void loadproductos(String url_Imagen, Producto producto) {
         
-       
         // creamos un nuevo VBox
         VBox newVBox = new VBox();
         //le agregamos el estilo
@@ -191,7 +190,36 @@ public class Pag_InventarioController implements Initializable {
         // botones
         Button AgregarP = new Button("Agregar pedido");
         AgregarP.getStyleClass().add("buttons");
-        AgregarP.setOnAction((ActionEvent event) -> {
+        // agregamos el evento
+        EventoAgregarPedido(AgregarP, url_Imagen, LCantidad2);
+       
+        Button Eliminar = new Button("Eliminar ");
+        Eliminar.getStyleClass().add("buttons");
+        // agregamos el evento
+        EventoEliminarProducto(Eliminar);
+
+        Button Editar = new Button("Editar");
+        Editar.getStyleClass().add("buttons");
+        // agregamos el evento
+        EventoEditarProducto(Editar, Lprecio2, LCantidad2); 
+
+        // agrego los botones al layaoutbtn
+        layoutbtn.getChildren().addAll(AgregarP, Eliminar, Editar);
+
+        newVBox.getChildren().addAll(Lnombre, imagen, layout, layoutbtn);
+        // agregamos el nuevo elemento al flowpane
+        flowPane.getChildren().add(newVBox);
+        
+         // por ultimo seteo el producto para poder luego
+        // realizar los editar y guardar individualmente
+        this.producto = producto;
+    }
+    
+    // Eventos de la cajita del producto
+    
+    public void EventoAgregarPedido(Button Agregarpedido,String url_Imagen, TextField LCantidad2){
+        
+         Agregarpedido.setOnAction((ActionEvent event) -> {
 
             if (!(producto.getCantidadUnidades() == 0)) {
                 try {
@@ -218,9 +246,12 @@ public class Pag_InventarioController implements Initializable {
             }
 
         });
-        Button Eliminar = new Button("Eliminar ");
-        Eliminar.getStyleClass().add("buttons");
-        Eliminar.setOnAction(event -> {
+        
+    }
+    
+    public void EventoEliminarProducto( Button Eliminar){
+        
+         Eliminar.setOnAction(event -> {
             // realizamos la conexion 
             conexion = new ConexionMySQL();
             // instanciamos la clase ProductoDao
@@ -240,9 +271,11 @@ public class Pag_InventarioController implements Initializable {
 
         });
 
-        Button Editar = new Button("Editar");
-        Editar.getStyleClass().add("buttons");
-        Editar.setOnAction(event -> {
+    }
+    
+    public void EventoEditarProducto(Button Editar,TextField Lprecio2,TextField LCantidad2){
+        
+         Editar.setOnAction(event -> {
 
             String Estado = Editar.getText();
             if (Estado.equalsIgnoreCase("editar")) {
@@ -260,17 +293,7 @@ public class Pag_InventarioController implements Initializable {
                 Editar.setText("Editar");
             }
         });
-
-        // agrego los botones al layaoutbtn
-        layoutbtn.getChildren().addAll(AgregarP, Eliminar, Editar);
-
-        newVBox.getChildren().addAll(Lnombre, imagen, layout, layoutbtn);
-        // agregamos el nuevo elemento al flowpane
-        flowPane.getChildren().add(newVBox);
         
-         // por ultimo seteo el producto para poder luego
-        // realizar los editar y guardar individualmente
-        this.producto = producto;
     }
     
     public void mostrarInfoCompletaPro(Producto producto,TextField precio, TextField cantidad, TextField categoria){

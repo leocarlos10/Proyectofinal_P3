@@ -23,19 +23,19 @@ public class ClienteDAO implements DAO<Cliente> {
 
             PreparedStatement statement;
 
-            String query = "INSERT INTO Cliente (nombre, direccion, tipo_entidad, whatsapp, ciudad, pais, correo, metodoPago, telefono, id_pedido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+            String query = "INSERT INTO Cliente (id, nombre, direccion, tipo_entidad, whatsapp, ciudad, pais, correo, metodoPago, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = connection.prepareStatement(query);
-
-            statement.setString(1, cliente.getNombre());
-            statement.setString(2, cliente.getDireccion());
-            statement.setString(3, cliente.getTipo_entidad());
-            statement.setString(4, cliente.getWhatsapp());
-            statement.setString(5, cliente.getCiudad());
-            statement.setString(6, cliente.getPais());
-            statement.setString(7, cliente.getCorreo());
-            statement.setString(8, cliente.getMetodoPago());
-            statement.setString(9, cliente.getTelefono());
-            statement.setString(10, cliente.getId_pedido());
+            
+            statement.setInt(1  , cliente.getId());
+            statement.setString(2, cliente.getNombre());
+            statement.setString(3, cliente.getDireccion());
+            statement.setString(4, cliente.getTipo_entidad());
+            statement.setString(5, cliente.getWhatsapp());
+            statement.setString(6, cliente.getCiudad());
+            statement.setString(7, cliente.getPais());
+            statement.setString(8, cliente.getCorreo());
+            statement.setString(9, cliente.getMetodoPago());
+            statement.setString(10, cliente.getTelefono());
 
             statement.executeUpdate();
             statement.close();
@@ -58,7 +58,7 @@ public class ClienteDAO implements DAO<Cliente> {
             ResultSet resultSet = statement.executeQuery(query);
 
             if (resultSet.next()) {
-                cliente.setId(resultSet.getString("id"));
+                cliente.setId(resultSet.getInt("id"));
                 cliente.setNombre(resultSet.getString("nombre"));
                 cliente.setDireccion(resultSet.getString("direccion"));
                 cliente.setTipo_entidad(resultSet.getString("tipo_entidad"));
@@ -68,7 +68,6 @@ public class ClienteDAO implements DAO<Cliente> {
                 cliente.setCorreo(resultSet.getString("correo"));
                 cliente.setMetodoPago(resultSet.getString("metodoPago"));
                 cliente.setTelefono(resultSet.getString("telefono"));
-                cliente.setId_pedido(resultSet.getString("id_pedido"));
 
             }
 
@@ -96,12 +95,11 @@ public class ClienteDAO implements DAO<Cliente> {
                     + "correo = ?,"
                     + "metodoPago = ?,"
                     + "telefono = ?,"
-                    + "id_pedido = ?,"
                     + "WHERE = cliente.id = ?";
 
             statement = connection.prepareStatement(query);
 
-            statement.setString(1, cliente.getId());
+            statement.setInt(1, cliente.getId());
             statement.setString(2, cliente.getNombre());
             statement.setString(3, cliente.getDireccion());
             statement.setString(4, cliente.getTipo_entidad());
@@ -111,8 +109,6 @@ public class ClienteDAO implements DAO<Cliente> {
             statement.setString(8, cliente.getCorreo());
             statement.setString(9, cliente.getMetodoPago());
             statement.setString(10, cliente.getTelefono());
-            statement.setString(11, cliente.getId_pedido());
-            statement.setString(12, cliente.getId());
 
             statement.executeUpdate();
             statement.close();
@@ -156,7 +152,7 @@ public class ClienteDAO implements DAO<Cliente> {
 
             while (resultSet.next()) {
                 Cliente cliente = new Cliente();
-                cliente.setId(resultSet.getString("id"));
+                cliente.setId(resultSet.getInt("id"));
                 cliente.setNombre(resultSet.getString("nombre"));
                 cliente.setDireccion(resultSet.getString("direccion"));
                 cliente.setTipo_entidad(resultSet.getString("tipo_entidad"));
@@ -166,7 +162,6 @@ public class ClienteDAO implements DAO<Cliente> {
                 cliente.setCorreo(resultSet.getString("correo"));
                 cliente.setMetodoPago(resultSet.getString("metodoPago"));
                 cliente.setTelefono(resultSet.getString("telefono"));
-                cliente.setId_pedido(resultSet.getString("id_pedido"));
 
                 listaCliente.add(cliente);
             }

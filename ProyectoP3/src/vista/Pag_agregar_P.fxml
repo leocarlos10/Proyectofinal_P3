@@ -40,7 +40,7 @@
          <center>
             <Pane prefHeight="505.0" prefWidth="530.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutX="14.0" layoutY="8.0" prefHeight="361.0" prefWidth="300.0" spacing="10.0">
+                  <VBox layoutX="14.0" layoutY="8.0" prefHeight="331.0" prefWidth="300.0" spacing="10.0">
                      <children>
                         <Label prefHeight="17.0" prefWidth="68.0" text="Nombre" />
                         <TextField fx:id="textnombre" styleClass="inputs" stylesheets="@style.css" />
@@ -57,7 +57,7 @@
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
                   </VBox>
-                  <Button layoutX="24.0" layoutY="416.0" mnemonicParsing="false" onAction="#event_guardar" prefHeight="25.0" prefWidth="72.0" styleClass="buttons" stylesheets="@style.css" text="Guardar" />
+                  <Button layoutX="15.0" layoutY="350.0" mnemonicParsing="false" onAction="#event_guardar" prefHeight="25.0" prefWidth="72.0" styleClass="buttons" stylesheets="@style.css" text="Guardar" />
                </children>
             </Pane>
          </center>

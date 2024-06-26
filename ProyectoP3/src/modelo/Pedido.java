@@ -13,6 +13,7 @@ public class Pedido {
     int C_unidades;
     LocalDate fecha;
     int id_producto;
+    int id_cliente;
 
     public Pedido(){}
 
@@ -21,13 +22,15 @@ public class Pedido {
             String tipo_E_sistema,
             int C_unidades,
             LocalDate fecha,
-            int id_producto) {
+            int id_producto,
+            int id_cliente) {
 
         this.id = id;
         this.tipo_E_sistema = tipo_E_sistema;
         this.C_unidades = C_unidades;
         this.fecha = fecha;
         this.id_producto = id_producto;
+        this.id_cliente = id_cliente;
     }
 
     public String getId() {
@@ -68,5 +71,13 @@ public class Pedido {
 
     public void setFecha(LocalDate fecha ){
         this.fecha = fecha;
+    }
+
+    public int getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
 }

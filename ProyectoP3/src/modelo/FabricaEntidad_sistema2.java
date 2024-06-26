@@ -83,13 +83,14 @@ public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema {
             String tipo_E_sistema,
             int C_unidades,
             LocalDate fecha,
-            int id_producto
+            int id_producto,
+            int id_cliente
     ) {
 
         try {
             conexion = new ConexionMySQL();
             daoPed = new PedidoDAO(conexion.getConnection());
-            daoPed.create(new Pedido(id, tipo_E_sistema, C_unidades, fecha, id_producto));
+            daoPed.create(new Pedido(id, tipo_E_sistema, C_unidades, fecha, id_producto,id_cliente));
             conexion.cerrar();
         } catch (SQLException ex) {
             Logger.getLogger(FabricaEntidad_sistema2.class.getName()).log(Level.SEVERE, null, ex);

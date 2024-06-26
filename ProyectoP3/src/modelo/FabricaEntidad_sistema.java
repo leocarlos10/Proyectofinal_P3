@@ -33,7 +33,8 @@ public interface FabricaEntidad_sistema {
             String tipo_E_sistema,
             int C_unidades,
             LocalDate fecha,
-            int id_producto
+            int id_producto,
+            int id_cliente
    );
     
 }

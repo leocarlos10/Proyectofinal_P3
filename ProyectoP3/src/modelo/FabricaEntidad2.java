@@ -22,7 +22,9 @@ public class FabricaEntidad2 implements FabricaEntidad{
     
 
     @Override
-    public void RegistroCliente(String nombre,
+    public void RegistroCliente(
+            int id,
+            String nombre,
             String direccion,
             String tipo_entidad,
             String whatsapp,
@@ -30,13 +32,12 @@ public class FabricaEntidad2 implements FabricaEntidad{
             String pais,
             String correo,
             String metodoPago,
-            String telefono,
-            String id_pedido
+            String telefono
     ){
         try {
             conexion = new ConexionMySQL();
             DaoC = new ClienteDAO(conexion.getConnection());
-            DaoC.create(new Cliente(nombre, direccion, whatsapp, ciudad, pais, correo, metodoPago, telefono, id_pedido));
+            DaoC.create(new Cliente(id, nombre, direccion, tipo_entidad, whatsapp, ciudad, pais, correo, metodoPago, telefono));
             conexion.cerrar();
         } catch (SQLException ex) {
             Logger.getLogger(FabricaEntidad2.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,6 +71,8 @@ public class FabricaEntidad2 implements FabricaEntidad{
         
         
     }
+
+    
     
 
 }

@@ -15,6 +15,8 @@ import modelo.Pedido;
 public class ListaPedidos {
     
      List<Pedido> lista = new ArrayList<>();
+     
+     
     
     
     public void agregarPedido(Pedido ped){

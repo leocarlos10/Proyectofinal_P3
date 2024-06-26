@@ -14,7 +14,9 @@ public interface FabricaEntidad {
     
     
     
-    void RegistroCliente(String nombre,
+    void RegistroCliente(
+            int id,
+            String nombre,
             String direccion,
             String tipo_entidad,
             String whatsapp,
@@ -22,8 +24,7 @@ public interface FabricaEntidad {
             String pais,
             String correo,
             String metodoPago,
-            String telefono,
-            String id_pedido);
+            String telefono);
     
     void RegsitroProveedor(
             String nombre,

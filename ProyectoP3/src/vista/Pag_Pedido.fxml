@@ -33,11 +33,11 @@
          <center>
             <ScrollPane fx:id="scrollpane" pannable="true" prefHeight="316.0" prefWidth="716.0" style="-fx-background-color: #ECF0F1;" BorderPane.alignment="CENTER">
                <content>
-                  <FlowPane fx:id="flowpane" orientation="VERTICAL" prefHeight="333.0" prefWidth="791.0" style="-fx-background-color: #ECF0F1;">
+                  <FlowPane fx:id="flowpane" orientation="VERTICAL" prefHeight="333.0" prefWidth="797.0" style="-fx-background-color: #ECF0F1;" vgap="10.0">
                      <children>
-                        <HBox prefHeight="70.0" prefWidth="790.0" styleClass="HboxCaja" stylesheets="@style.css">
+                        <FlowPane fx:id="flowpaneModelo" alignment="TOP_CENTER" prefHeight="80.0" prefWidth="790.0" styleClass="FlowpaneCaja" stylesheets="@style.css">
                            <children>
-                              <HBox prefHeight="48.0" prefWidth="526.0" spacing="40.0">
+                              <HBox prefHeight="59.0" prefWidth="526.0" spacing="40.0">
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="16.0" text="ID " />
                                     <Label text="Cantidad de Unidades" />
@@ -47,17 +47,21 @@
                                     <Label text="Estado" />
                                  </children>
                               </HBox>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" styleClass="buttons" stylesheets="@style.css" text="Agregar Venta" />
-                              <Button mnemonicParsing="false" styleClass="buttons" stylesheets="@style.css" text="Editar" />
-                              <Button mnemonicParsing="false" styleClass="buttons" stylesheets="@style.css" text="Eliminar" />
+                              <HBox prefHeight="59.0" prefWidth="233.0" spacing="10.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" styleClass="buttons" stylesheets="@style.css" text="Agregar Venta" />
+                                    <Button mnemonicParsing="false" styleClass="buttons" stylesheets="@style.css" text="Editar" />
+                                    <Button mnemonicParsing="false" styleClass="buttons" stylesheets="@style.css" text="Eliminar" />
+                                 </children>
+                              </HBox>
                            </children>
-                        </HBox>
+                        </FlowPane>
                      </children></FlowPane>
                </content>
             </ScrollPane>
          </center>
          <left>
-            <Pane prefHeight="335.0" prefWidth="48.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="335.0" prefWidth="43.0" BorderPane.alignment="CENTER" />
          </left>
          <right>
             <Pane prefHeight="335.0" prefWidth="43.0" BorderPane.alignment="CENTER" />

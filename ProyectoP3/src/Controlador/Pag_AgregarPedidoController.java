@@ -88,6 +88,9 @@ public class Pag_AgregarPedidoController implements Initializable {
     @FXML
     private TextField input_id_pedido;
     
+     @FXML
+    private TextField inputIDCliente;
+    
     @FXML
     private TextField textCantidadunidades;
 
@@ -147,10 +150,12 @@ public class Pag_AgregarPedidoController implements Initializable {
                          "pedido" ,
                          Integer.parseInt(inputCanidadU.getText()),
                          LocalDate.parse(inputFecha.getText()),
-                         producto.getId());
+                         producto.getId(),
+                         Integer.parseInt(inputIDCliente.getText()));
                  
                  // agrego el cliente con su id relacionado
                  fabricaE.RegistroCliente(
+                         Integer.parseInt(inputIDCliente.getText()),
                          InputNombre.getText(),
                          InputDireccion.getText(),
                          "cliente",
@@ -159,8 +164,7 @@ public class Pag_AgregarPedidoController implements Initializable {
                          inputPais.getText(),
                          inputCorreo.getText(),
                          inputMetodoPago.getText(),
-                         inputTelefono.getText(),
-                         input_id_pedido.getText());
+                         inputTelefono.getText());
                  
              }catch(NumberFormatException e){
                  Alert alerta = new Alert(Alert.AlertType.ERROR);
