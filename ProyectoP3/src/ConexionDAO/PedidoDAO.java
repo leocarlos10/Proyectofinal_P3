@@ -106,6 +106,21 @@ public class PedidoDAO implements DAO<Pedido> {
     @Override
     public void delete(int id) {
 
+        try {
+            
+            PreparedStatement statement; 
+            String query = "DELETE FROM pedido WHERE id = ? ";
+            statement = connection.prepareStatement(query);
+
+            statement.setInt(1 , id );
+            statement.execute();
+
+            statement.close();
+
+        } catch (Exception e) {
+            System.out.println("Error al eliminar pedido" + e.getMessage());
+        }
+
     }
 
     @Override
