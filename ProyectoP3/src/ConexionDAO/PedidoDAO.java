@@ -41,6 +41,7 @@ public class PedidoDAO implements DAO<Pedido> {
 
     @Override
     public Pedido read(String id) {
+        Pedido pedido = new Pedido();
 
         return null;
     }
