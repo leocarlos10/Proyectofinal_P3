@@ -23,7 +23,7 @@ public class ClienteDAO implements DAO<Cliente> {
 
             PreparedStatement statement;
 
-            String query = "INSERT INTO Cliente (id, nombre, direccion, tipo_entidad, whatsapp, ciudad, pais, correo, metodoPago, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO Cliente (id, nombre, direccion, tipo_entidad, whatsapp, ciudad, pais, correo, metodoPago, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ? ,?)";
             statement = connection.prepareStatement(query);
             
             statement.setInt(1  , cliente.getId());
@@ -41,7 +41,7 @@ public class ClienteDAO implements DAO<Cliente> {
             statement.close();
 
         } catch (SQLException e) {
-            System.out.println("Error al insertar producto: " + e.getMessage());
+            System.out.println("Error al insertar cliente: " + e.getMessage());
         }
 
     }

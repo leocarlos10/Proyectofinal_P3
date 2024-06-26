@@ -144,16 +144,8 @@ public class Pag_AgregarPedidoController implements Initializable {
              FabricaEntidad fabricaE = new FabricaEntidad2();
              
              try{
-                 // agrego el pedido
-                 fabrica.RegistroPedido(
-                         input_id_pedido.getText(),
-                         "pedido" ,
-                         Integer.parseInt(inputCanidadU.getText()),
-                         LocalDate.parse(inputFecha.getText()),
-                         producto.getId(),
-                         Integer.parseInt(inputIDCliente.getText()));
                  
-                 // agrego el cliente con su id relacionado
+                  // agrego el cliente con su id relacionado
                  fabricaE.RegistroCliente(
                          Integer.parseInt(inputIDCliente.getText()),
                          InputNombre.getText(),
@@ -165,6 +157,18 @@ public class Pag_AgregarPedidoController implements Initializable {
                          inputCorreo.getText(),
                          inputMetodoPago.getText(),
                          inputTelefono.getText());
+                 
+                 
+                 // agrego el pedido
+                 fabrica.RegistroPedido(
+                         input_id_pedido.getText(),
+                         "pedido" ,
+                         Integer.parseInt(inputCanidadU.getText()),
+                         LocalDate.parse(inputFecha.getText()),
+                         producto.getId(),
+                         Integer.parseInt(inputIDCliente.getText()));
+                 
+                
                  
              }catch(NumberFormatException e){
                  Alert alerta = new Alert(Alert.AlertType.ERROR);
