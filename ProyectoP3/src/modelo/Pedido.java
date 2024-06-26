@@ -8,25 +8,26 @@ import java.time.LocalDate;
  */
 public class Pedido {
 
-     String id;
-     String tipo_E_sistema;
-     int C_unidades;
-     LocalDate fecha;
-     int id_producto;
-    
+    String id;
+    String tipo_E_sistema;
+    int C_unidades;
+    LocalDate fecha;
+    int id_producto;
+
+    public Pedido(){}
 
     public Pedido(
             String id,
             String tipo_E_sistema,
             int C_unidades,
             LocalDate fecha,
-            int id_producto
-    ) {
+            int id_producto) {
+
         this.id = id;
         this.tipo_E_sistema = tipo_E_sistema;
         this.C_unidades = C_unidades;
         this.fecha = fecha;
-        this.id_producto =id_producto;
+        this.id_producto = id_producto;
     }
 
     public String getId() {
@@ -53,4 +54,19 @@ public class Pedido {
         this.id_producto = id_producto;
     }
 
+    public void setId(String id){
+        this.id = id;
+    }
+
+    public void setTipo_E_sistema(String tipo_E_sistema){
+        this.tipo_E_sistema = tipo_E_sistema;
+    }
+
+    public void setC_unidades(int C_unidades){
+        this.C_unidades = C_unidades;
+    }
+
+    public void setFecha(LocalDate fecha ){
+        this.fecha = fecha;
+    }
 }
