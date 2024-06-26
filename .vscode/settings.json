@@ -1,0 +1,14 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "ProyectoP3/lib/javafx21/javafx.base.jar",
+        "ProyectoP3/lib/javafx21/javafx.controls.jar",
+        "ProyectoP3/lib/javafx21/javafx.fxml.jar",
+        "ProyectoP3/lib/javafx21/javafx.graphics.jar",
+        "ProyectoP3/lib/javafx21/javafx.media.jar",
+        "ProyectoP3/lib/javafx21/javafx.swing.jar",
+        "ProyectoP3/lib/javafx21/javafx.web.jar",
+        "ProyectoP3/lib/javafx21/javafx-swt.jar",
+        "ProyectoP3/lib/javaJDBC/mysql-connector-j-8.1.0.jar"
+    ]
+}

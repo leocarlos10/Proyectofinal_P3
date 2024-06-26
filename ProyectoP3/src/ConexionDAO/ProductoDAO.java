@@ -52,10 +52,16 @@ public class ProductoDAO implements DAO<Producto> {
 
     }
 
+    /*
+     * metodo que retorna un objeto Producto con los datos de la base de datos
+     * @param producto
+     */
+
     @Override
     public Producto read(String id) {
 
-        Producto prod;
+        Producto prod = new Producto();
+        ;
 
         try {
 
@@ -64,7 +70,7 @@ public class ProductoDAO implements DAO<Producto> {
             ResultSet resultSet = statement.executeQuery(query);
 
             if (resultSet.next()) {
-                prod = new Producto();
+
                 prod.setId(resultSet.getInt("id"));
                 prod.setNombre(resultSet.getString("nombre"));
                 prod.setPrecio(resultSet.getInt("precio"));
@@ -74,7 +80,7 @@ public class ProductoDAO implements DAO<Producto> {
                 prod.setCategoria(resultSet.getString("categoria"));
                 prod.setCantidadUnidades(resultSet.getInt("cantidadUnidades"));
                 prod.setNombre_imagen(resultSet.getString("nombre_imagenes"));
-            
+
             }
 
             statement.close();
@@ -83,7 +89,7 @@ public class ProductoDAO implements DAO<Producto> {
             System.out.println("Error al Leer producto: " + e.getMessage());
         }
 
-        return null;
+        return prod;
     }
 
     @Override
