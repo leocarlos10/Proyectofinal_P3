@@ -4,33 +4,34 @@ package modelo;
  *
  * @author USUARIO
  */
-public class Cliente  {
-    
-     String id;
-     String nombre;
-     String direccion;
-     String tipo_entidad;
-     String whatsapp;
-     String ciudad;
-     String pais;
-     String correo;  
-     String metodoPago;
-     String telefono;
-     String id_pedido;
-    
+public class Cliente {
 
-    public Cliente( 
-            String nombre, 
-            String direccion, 
-            String whatsapp, 
-            String ciudad, 
-            String pais, 
-            String correo, 
-            String metodoPago, 
+    String id;
+    String nombre;
+    String direccion;
+    String tipo_entidad;
+    String whatsapp;
+    String ciudad;
+    String pais;
+    String correo;
+    String metodoPago;
+    String telefono;
+    String id_pedido;
+
+    public Cliente() {
+    }
+
+    public Cliente(
+            String nombre,
+            String direccion,
+            String whatsapp,
+            String ciudad,
+            String pais,
+            String correo,
+            String metodoPago,
             String telefono,
-            String id_pedido
-    ) {
-        
+            String id_pedido) {
+
         this.nombre = nombre;
         this.direccion = direccion;
         this.whatsapp = whatsapp;
@@ -89,4 +90,45 @@ public class Cliente  {
     public void setId_pedido(String id_pedido) {
         this.id_pedido = id_pedido;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setTipo_entidad(String tipo_entidad) {
+        this.tipo_entidad = tipo_entidad;
+    }
+
+    public void setWhatsapp(String whatsapp) {
+        this.whatsapp = whatsapp;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public void setMetodoPago(String metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
 }
