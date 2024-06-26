@@ -125,7 +125,33 @@ public class PedidoDAO implements DAO<Pedido> {
 
     @Override
     public List<Pedido> get() {
-        return null;
+
+        List <Pedido> listaPedido = new ArrayList<>();
+
+        try {
+
+            String sql = "SELECT * FROM pedido";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                Pedido pedido = new Pedido();
+                pedido.setId(resultSet.getString("id"));
+                pedido.setTipo_E_sistema(resultSet.getString("tipo_E_sistema"));
+                pedido.setC_unidades(resultSet.getInt("C_unidades"));
+                pedido.setFecha(resultSet.getDate("fecha").toLocalDate());
+                pedido.setId(resultSet.getString("id_producto"));
+
+                listaPedido.add(pedido);
+            }
+
+            statement.close();
+
+        } catch (Exception e) {
+            System.out.println("Error al traer los datos de la base de datos");
+        }
+
+        return listaPedido;
     }
 
 }
