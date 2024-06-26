@@ -35,6 +35,7 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -123,18 +124,6 @@ public class Pag_InventarioController implements Initializable {
         Label Lnombre = new Label(producto.getNombre());
         Dimensiones_EstiloLabels(Lnombre);
 
-        //creamos la imagen
-        imagen = new ImageView();
-        try {
-            Image image = new Image(new FileInputStream(url_Imagen));
-            imagen.setImage(image);
-            imagen.setFitWidth(125);
-            imagen.setFitHeight(122);
-
-        } catch (FileNotFoundException e) {
-            System.out.println("imagen no encontrada");
-        }
-
         // layaout gridPane para agregar la informacion
         GridPane layout = new GridPane();
         layout.setHgap(5); // Espaciado horizontal (entre columnas)
@@ -178,7 +167,25 @@ public class Pag_InventarioController implements Initializable {
         layout.add(Lcategoria2, 0, 1);
         layout.add(Lprecio2, 1, 1);
         layout.add(LCantidad2, 2, 1);
+        
+        //creamos la imagen
+        imagen = new ImageView();
+        try {
+            Image image = new Image(new FileInputStream(url_Imagen));
+            imagen.setImage(image);
+            imagen.setFitWidth(125);
+            imagen.setFitHeight(122);
+            
+            // agregamos el evento para que muestre la info completa del producto
+            imagen.addEventHandler(MouseEvent.MOUSE_CLICKED, event->{
+                mostrarInfoCompletaPro(producto, Lprecio2,LCantidad2,Lcategoria2); 
+            });
 
+        } catch (FileNotFoundException e) {
+            System.out.println("imagen no encontrada");
+        }
+        
+        // creamos el layaout para los botones de abajo de la caja
         HBox layoutbtn = new HBox();
         layoutbtn.getStyleClass().add("Layoutbtn");
         // botones
@@ -264,6 +271,23 @@ public class Pag_InventarioController implements Initializable {
          // por ultimo seteo el producto para poder luego
         // realizar los editar y guardar individualmente
         this.producto = producto;
+    }
+    
+    public void mostrarInfoCompletaPro(Producto producto,TextField precio, TextField cantidad, TextField categoria){
+        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/Pag_Info_Producto.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            Pag_Info_ProductoController controller = loader.getController();
+            controller.setProducto(producto,stage,precio,cantidad,categoria);
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("Error al cambiar la ventana" +e);
+        }
+        
     }
 
     private boolean eliminarImagen_Producto(String nombreImagen) {
