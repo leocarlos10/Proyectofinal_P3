@@ -1,6 +1,5 @@
 package ConexionDAO;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,25 +16,24 @@ public class ProductoDAO implements DAO<Producto> {
     public ProductoDAO(Connection connection) {
         this.connection = connection;
     }
-    
+
     /*
-    * Este metodo es el encargado de guardar un producto en la base de datos
-     revise como parametro un producto 
-    
-    @param producto
-    */
+     * Este metodo es el encargado de guardar un producto en la base de datos
+     * revise como parametro un producto
+     * 
+     * @param producto
+     */
     @Override
     public void create(Producto producto) {
 
         try {
-            
+
             PreparedStatement statement;
 
             String query = "INSERT INTO producto (nombre, precio, tipo_E_sistema, descripcion, coleccion, categoria, cantidadUnidades, nombre_imagenes) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
 
-            
             statement = connection.prepareStatement(query);
-            
+
             statement.setString(1, producto.getNombre());
             statement.setDouble(2, producto.getPrecio());
             statement.setString(3, producto.getTipo_E_sistema());
@@ -48,7 +46,6 @@ public class ProductoDAO implements DAO<Producto> {
             statement.executeUpdate();
             statement.close();
 
-            
         } catch (SQLException e) {
             System.out.println("Error al insertar producto: " + e.getMessage());
         }
@@ -57,25 +54,35 @@ public class ProductoDAO implements DAO<Producto> {
 
     @Override
     public Producto read(String id) {
-        
+
         Producto prod;
-        
+
         try {
-            PreparedStatement statement;
+
             String query = "SELECT * FROM Producto where id = ?";
-            statement = connection.prepareStatement(query);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            if (resultSet.next()) {
+                prod = new Producto();
+                prod.setId(resultSet.getInt("id"));
+                prod.setNombre(resultSet.getString("nombre"));
+                prod.setPrecio(resultSet.getInt("precio"));
+                prod.setTipo_E_sistema(resultSet.getString("tipo_E_sistema"));
+                prod.setDescripcion(resultSet.getString("descripcion"));
+                prod.setColeccion(resultSet.getString("coleccion"));
+                prod.setCategoria(resultSet.getString("categoria"));
+                prod.setCantidadUnidades(resultSet.getInt("cantidadUnidades"));
+                prod.setNombre_imagen(resultSet.getString("nombre_imagenes"));
             
-            statement.setString(1, id);
-            ResultSet resultSet = statement.executeQuery();
-            
+            }
+
             statement.close();
-            
-            
+
         } catch (Exception e) {
             System.out.println("Error al Leer producto: " + e.getMessage());
         }
-        
-        
+
         return null;
     }
 
@@ -119,49 +126,46 @@ public class ProductoDAO implements DAO<Producto> {
         }
 
     }
-    
-    
 
     @Override
     public void delete(int id) {
-        
+
         try {
             PreparedStatement statement;
             String query = "DELETE FROM producto WHERE id = ?";
             statement = connection.prepareStatement(query);
             statement.setInt(1, id);
             statement.execute();
-            
-            
+
             statement.close();
-            
+
         } catch (SQLException e) {
             System.out.println("Error al eliminar producto" + e.getMessage());
         }
     }
-     
+
     /*
-    * Este metodo se encarga de traer todos los productos 
-      de la base de datos
-    
-     @return la lista de productos(listaPro)
-    */
+     * Este metodo se encarga de traer todos los productos
+     * de la base de datos
+     * 
+     * @return la lista de productos(listaPro)
+     */
     @Override
     public List<Producto> get() {
-        
+
         List<Producto> listaPro = new ArrayList<>();
-        
-        try{
+
+        try {
             // creamos el sql
             String sql = "SELECT * FROM `producto`";
             // creamos el objeto statement
             Statement statement = connection.createStatement();
             // ejecutamos el sql.
             ResultSet resultado = statement.executeQuery(sql);
-            
+
             // creamos un bucle que recorra la tabla y cree un objeto de tipo Producto
             // para finalmente agregarlo ala lista listaPro
-            while(resultado.next()){
+            while (resultado.next()) {
                 // creamos el objeto
                 Producto producto = new Producto();
                 producto.setId(resultado.getInt("id"));
@@ -173,21 +177,18 @@ public class ProductoDAO implements DAO<Producto> {
                 producto.setCategoria(resultado.getString("categoria"));
                 producto.setCantidadUnidades(resultado.getInt("cantidadUnidades"));
                 producto.setNombre_imagen(resultado.getString("nombre_imagenes"));
-                
+
                 // guardamos el objeto en la lista
                 listaPro.add(producto);
             }
-            
-            
+
             statement.close();
-        
-        }catch(Exception e){
-            System.out.println("Error al traer los datos de la base de datos. "+ e);
+
+        } catch (Exception e) {
+            System.out.println("Error al traer los datos de la base de datos. " + e);
         }
-        
+
         // retornamos la lista
         return listaPro;
-    } 
+    }
 }
-
-
