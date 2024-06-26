@@ -29,6 +29,8 @@ public class Pag_PedidoController implements Initializable {
         // indicamos que el flowpane sea responsive tanto en el width como como en el heigth.
         flowpane.prefWidthProperty().bind(scrollpane.widthProperty());
         flowpane.prefHeightProperty().bind(scrollpane.heightProperty());
-    }    
+    }   
+    
+    
     
 }

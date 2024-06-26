@@ -96,6 +96,15 @@
     
     /* css pag pedidos*/
     
+    .HboxCaja{
+        -fx-border-color: black;
+        -fx-border-radius: 20px;
+        -fx-border-width: 1px;
+        -fx-padding: 10 10 10 10;
+        -fx-spacing: 10;
+        
+    }
+    
     
     
     
