@@ -37,14 +37,18 @@ public class Pag_PedidoController implements Initializable {
     FabricaEntidad_sistema fabricaES;
     FabricaEntidad fabricaE;
 
-     @FXML
+    @FXML
     private FlowPane flowpane;
 
     @FXML
     private ScrollPane scrollpane;
-    
-     @FXML
+
+    @FXML
     private FlowPane flowpaneModelo;
+
+    @FXML
+    private Label info_total_pedidos;
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -60,8 +64,6 @@ public class Pag_PedidoController implements Initializable {
             cargarPedidos();
         }
         
-         cargarPedidos();
-        
     }
     
     public void cargarPedidos(){
@@ -71,6 +73,8 @@ public class Pag_PedidoController implements Initializable {
         }
         
         List<Pedido> lista =  fabricaES.ObtenerPedidos();
+        // mandamos ala info de total de pedidos el tamaño de la lista 
+        info_total_pedidos.setText(String.valueOf(lista.size()));
         
         for(Pedido i: lista){
             

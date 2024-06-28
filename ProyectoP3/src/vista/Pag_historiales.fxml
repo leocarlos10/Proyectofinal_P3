@@ -58,21 +58,12 @@
             </Pane>
          </top>
          <center>
-            <ScrollPane fx:id="scrollpane" pannable="true" prefHeight="322.0" prefWidth="757.0" style="-fx-background-color: #ECF0F1;" BorderPane.alignment="CENTER">
+            <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" pannable="true" prefHeight="322.0" prefWidth="757.0" style="-fx-background-color: #ECF0F1;" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
                <content>
-                  <FlowPane fx:id="flowpane" orientation="VERTICAL" prefHeight="333.0" prefWidth="755.0" style="-fx-background-color: #ECF0F1;" />
+                  <FlowPane fx:id="flowpane" orientation="VERTICAL" prefHeight="354.0" prefWidth="884.0" style="-fx-background-color: #ECF0F1;" />
                </content>
             </ScrollPane>
          </center>
-         <left>
-            <Pane prefHeight="335.0" prefWidth="67.0" BorderPane.alignment="CENTER" />
-         </left>
-         <right>
-            <Pane prefHeight="335.0" prefWidth="62.0" BorderPane.alignment="CENTER" />
-         </right>
-         <bottom>
-            <Pane prefHeight="21.0" prefWidth="886.0" BorderPane.alignment="CENTER" />
-         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>

@@ -110,7 +110,9 @@ public class Pag_InicioController implements Initializable {
         Pag_Inventario.setVisible(false);
         Pag_Inicio_Imagenes.setVisible(false);
         Pag_Pedido.setVisible(true);
+        controllerPedido.cargarPedidos();
         Pag_historiales.setVisible(false);
+        
     }
     
    

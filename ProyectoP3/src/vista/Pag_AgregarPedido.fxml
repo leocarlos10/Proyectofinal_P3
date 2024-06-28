@@ -71,8 +71,6 @@
                   </Label>
                   <VBox layoutX="43.0" layoutY="181.0" prefHeight="350.0" prefWidth="275.0">
                      <children>
-                        <Label prefHeight="17.0" prefWidth="67.0" text="ID cliente" />
-                        <TextField fx:id="inputIDCliente" styleClass="inputs" stylesheets="@style.css" />
                         <Label prefHeight="17.0" prefWidth="50.0" text="Nombre" />
                         <TextField fx:id="InputNombre" styleClass="inputs" stylesheets="@style.css" />
                         <Label prefHeight="17.0" prefWidth="60.0" text="Dirección" />
