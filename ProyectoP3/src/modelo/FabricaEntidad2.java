@@ -48,6 +48,23 @@ public class FabricaEntidad2 implements FabricaEntidad{
     }
     
     @Override
+    public Cliente obtenerCliente(int id) {
+
+        conexion = new ConexionMySQL();
+        DaoC = new ClienteDAO(conexion.getConnection());
+        Cliente cli = DaoC.read(id);
+
+        try {
+            conexion.cerrar();
+        } catch (SQLException ex) {
+            Logger.getLogger(FabricaEntidad2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return cli;
+    }
+
+    
+    @Override
     public void RegsitroProveedor(
             String nombre,
             String direccion,
@@ -72,6 +89,7 @@ public class FabricaEntidad2 implements FabricaEntidad{
         
     }
 
+   
     
     
 

@@ -47,15 +47,16 @@ public class ClienteDAO implements DAO<Cliente> {
     }
 
     @Override
-    public Cliente read(String id) {
+    public Cliente read(int id) {
 
         Cliente cliente = new Cliente();
 
         try {
 
             String query = "SELECT * FROM cliente where id = ?";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
                 cliente.setId(resultSet.getInt("id"));

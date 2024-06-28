@@ -13,17 +13,23 @@ import modelo.Pedido;
  * @author USUARIO
  */
 public class ListaPedidos {
-    
-     List<Pedido> lista = new ArrayList<>();
-     
-     
-    
-    
-    public void agregarPedido(Pedido ped){
+
+    List<Pedido> lista;
+
+    public ListaPedidos() {
+
+        lista = new ArrayList<>();
+    }
+
+    public void setLista(List<Pedido> lista) {
+        this.lista = lista;
+    }
+
+    public void agregarPedido(Pedido ped) {
         lista.add(ped);
     }
-    
-    public List<Pedido> getLista(){
-       return lista;
+
+    public List<Pedido> getLista() {
+        return lista;
     }
 }

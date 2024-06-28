@@ -58,16 +58,16 @@ public class ProductoDAO implements DAO<Producto> {
      */
 
     @Override
-    public Producto read(String id) {
+    public Producto read(int id) {
 
         Producto prod = new Producto();
-        ;
 
         try {
 
-            String query = "SELECT * FROM Producto where id = ?";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
+            String query = "SELECT * FROM producto where id = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, id); 
+            ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
 

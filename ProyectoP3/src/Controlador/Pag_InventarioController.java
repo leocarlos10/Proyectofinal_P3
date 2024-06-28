@@ -6,6 +6,7 @@ package Controlador;
 
 import ConexionDAO.ConexionMySQL;
 import ConexionDAO.DAO;
+import ConexionDAO.PedidoDAO;
 import ConexionDAO.ProductoDAO;
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,6 +45,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.FabricaEntidad_sistema;
 import modelo.FabricaEntidad_sistema2;
+import modelo.Pedido;
 import modelo.Producto;
 
 /**
@@ -251,28 +253,55 @@ public class Pag_InventarioController implements Initializable {
     
     public void EventoEliminarProducto( Button Eliminar){
         
-         Eliminar.setOnAction(event -> {
+        Eliminar.setOnAction(event -> {
             // realizamos la conexion 
             conexion = new ConexionMySQL();
             // instanciamos la clase ProductoDao
             dao = new ProductoDAO(conexion.getConnection());
-            // eliminamos el producto de la DB
-            dao.delete(producto.getId());
+            //antes de elimar el producto verifcamos si tiene pedidos agregados.
+            boolean estado = verf_pedidos_producto(conexion, producto);
+            
+            if (estado) {
+                // eliminamos el producto de la DB
+                dao.delete(producto.getId());
+            }else{
+                
+                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                alerta.setTitle("SUGERENCIA");
+                alerta.setContentText("El producto no se puede eliminar porque tiene aun pedidos pendientes.");
+                alerta.show();
+            }
 
             cerrarConexion();
             // eliminamos la imagen del fichero
             liberar_recursos();
-            cargarproductos();
             if (eliminarImagen_Producto(producto.getNombre_imagen())) {
                 System.out.println("La imagen se elimino corectamente");
             } else {
                 System.out.println("La imagen no se elimino.");
             }
+            
+             cargarproductos();
 
         });
 
     }
     
+    public boolean verf_pedidos_producto(ConexionMySQL conexion,Producto producto){
+        
+        boolean bandera =true;
+        // instanciamos la clase que maneja la db de los pedidos
+        DAO<Pedido> dao = new PedidoDAO(conexion.getConnection());
+        List<Pedido> lista_pedidos = dao.get();
+        for( Pedido i: lista_pedidos){
+            
+            if(producto.getId() == i.getId_producto()){
+                bandera = false;
+            }
+            
+        }
+        return bandera;
+    }
     public void EventoEditarProducto(Button Editar,TextField Lprecio2,TextField LCantidad2){
         
          Editar.setOnAction(event -> {

@@ -26,6 +26,8 @@ public interface FabricaEntidad {
             String metodoPago,
             String telefono);
     
+    Cliente obtenerCliente(int id);
+    
     void RegsitroProveedor(
             String nombre,
             String direccion,

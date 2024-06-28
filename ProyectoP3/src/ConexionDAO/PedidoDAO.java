@@ -45,7 +45,7 @@ public class PedidoDAO implements DAO<Pedido> {
     }
 
     @Override
-    public Pedido read(String id) {
+    public Pedido read(int id) {
         Pedido pedido = new Pedido();
 
         try {
@@ -143,7 +143,8 @@ public class PedidoDAO implements DAO<Pedido> {
                 pedido.setTipo_E_sistema(resultSet.getString("tipo_E_sistema"));
                 pedido.setC_unidades(resultSet.getInt("C_unidades"));
                 pedido.setFecha(resultSet.getDate("fecha").toLocalDate());
-                pedido.setId(resultSet.getString("id_producto"));
+                pedido.setId_producto(resultSet.getInt("id_producto"));
+                pedido.setId_cliente(resultSet.getInt("id_cliente"));
 
                 listaPedido.add(pedido);
             }
@@ -151,7 +152,7 @@ public class PedidoDAO implements DAO<Pedido> {
             statement.close();
 
         } catch (Exception e) {
-            System.out.println("Error al traer los datos de la base de datos");
+            System.out.println("Error al traer los pedidos "+e);
         }
 
         return listaPedido;

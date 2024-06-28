@@ -14,7 +14,15 @@ import modelo.Proveedor;
  */
 public class ListaProveedor {
     
-     List<Proveedor> lista = new ArrayList<>();
+     List<Proveedor> lista;
+     
+     public ListaProveedor(){
+         lista = new ArrayList<>();
+     }
+
+    public void setLista(List<Proveedor> lista) {
+        this.lista = lista;
+    }
     
     
     public void agregarProveedor(Proveedor pro){

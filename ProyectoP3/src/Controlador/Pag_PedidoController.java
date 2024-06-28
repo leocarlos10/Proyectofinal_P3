@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -59,6 +60,8 @@ public class Pag_PedidoController implements Initializable {
             cargarPedidos();
         }
         
+         cargarPedidos();
+        
     }
     
     public void cargarPedidos(){
@@ -66,8 +69,17 @@ public class Pag_PedidoController implements Initializable {
         if(!flowpane.getChildren().isEmpty()){
              flowpane.getChildren().clear();
         }
-       
         
+        List<Pedido> lista =  fabricaES.ObtenerPedidos();
+        
+        for(Pedido i: lista){
+            
+            // recorremos la lista de pedidos y traemos los productos y los clientes realcionados el pedido
+            Cliente cliente = fabricaE.obtenerCliente(i.getId_cliente());
+            Producto producto = fabricaES.obtenerProducto(i.getId_producto());
+            // ejecutamos el evento que carga los pedidos.
+            loadPedidos(i,cliente,producto);
+        } 
     }
 
     
@@ -78,13 +90,17 @@ public class Pag_PedidoController implements Initializable {
         // le agregamos dimensiones
         flowpanebox.setPrefSize(790, 80);
         // le agreagamos un estilo
-        flowpanebox.getStyleClass().add("FlowpaneCaja");
+        flowpanebox.getStyleClass().add("flowpanebox");
+        
         /*
         dentro del flowpane van dos layouts 
         un gridPane para acomodar la informacion del pedido
         y un HBox para ubicar los botones de agregar venta, editar, Eliminar
         */
         GridPane grid = new GridPane();
+        
+        grid.setHgap(5); // Espaciado horizontal (entre columnas)
+        grid.setVgap(5); // Espaciado vertical (entre filas)
         /*
         Dentro del gridPane en la primera fila van los labels de la info 
         del pedido 
@@ -109,9 +125,17 @@ public class Pag_PedidoController implements Initializable {
         TextField id = new TextField(String.valueOf(pedido.getId()));
         TextField CantidadU = new TextField(String.valueOf(pedido.getC_unidades()));
         TextField fecha = new TextField(String.valueOf(pedido.getFecha()));
+        // agregamos estilos a cada text
+        setEstilosTextField(id,CantidadU,fecha);
         Button btncliente = new Button(cliente.getNombre());
         Button btnproducto = new Button(producto.getNombre());
+        //agregamos los eventos
+        evento_mostrarCliente(btncliente);
+        evento_mostrarProducto(btnproducto);
         ComboBox estado = new ComboBox();
+        // agregamos estilos a os buttons y a el comboBox
+        setEstilosButton(btncliente, btnproducto);
+        setEstilosCombo(estado);
         // agrego los elementos del combo
         estado.getItems().addAll("Pendiente","En Proceso","Enviado","Completado","Cancelado");
         
@@ -130,6 +154,14 @@ public class Pag_PedidoController implements Initializable {
         Button btnAgregarV = new Button("Agregar Venta");
         Button btnEditar = new Button("Editar");
         Button btnEliminar = new Button("Eliminar");
+        setEstilosButton(btnAgregarV, btnEditar, btnEliminar);
+        // agregamos los botones al layaoutbtn
+        layoutbtn.getChildren().addAll(btnAgregarV,btnEditar,btnEliminar);
+        
+        //  agregamos el gridpane y layout pane al flowpane
+        flowpanebox.getChildren().addAll(grid,layoutbtn);
+        // por ultimo agremaos el flowpanebox al flowpane de la vista que contiene las cajitas de los pedidos
+        flowpane.getChildren().addAll(flowpanebox);
     }
     
     public void evento_mostrarCliente(Button btncliente){
@@ -151,6 +183,32 @@ public class Pag_PedidoController implements Initializable {
         });
         
     }
+     
+     public void setEstilosTextField(TextField text,TextField text2, TextField text3){
+         
+         text.getStyleClass().add("inputs");
+         text2.getStyleClass().add("inputs");
+         text3.getStyleClass().add("inputs");
+     }
+     
+     public void setEstilosButton(Button btn1, Button btn2){
+         
+         btn1.getStyleClass().add("buttons");
+         btn2.getStyleClass().add("buttons");
+     }
+     
+     public void setEstilosButton(Button btn1, Button btn2,Button btn3){
+         
+         btn1.getStyleClass().add("buttons");
+         btn2.getStyleClass().add("buttons");
+         btn3.getStyleClass().add("buttons");
+     }
+     
+     public void setEstilosCombo(ComboBox combo){
+         
+         combo.setPromptText("Estado");
+         combo.getStyleClass().add("comboBox");
+     }
     
     
     

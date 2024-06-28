@@ -25,11 +25,11 @@
     .inputs{
         -fx-border-color:black;
         -fx-border-radius:10px;
-         -fx-background-radius: 10px;
-          -fx-border-width: 1px;
+        -fx-background-radius: 10px;
+        -fx-border-width: 1px;
         -fx-control-inner-background: #ECF0F1;
-         -fx-padding: 0 0 0 5px; 
-         -fx-pref-height: 25px;
+        -fx-padding: 0 0 0 5px;
+        -fx-pref-height: 25px;
     }
     
     .Labels{
@@ -101,12 +101,14 @@
     
     /* css pag pedidos*/
     
-    .FlowpaneCaja{
+    .flowpanebox{
         -fx-border-color: black;
         -fx-border-radius: 20px;
         -fx-border-width: 1px;
-        -fx-padding: 10 10 10 10;
-        -fx-spacing: 10;
+        -fx-padding: 5 5 9 9;
+        -fx-orientation: horizontal;
+        -fx-hgap: 10px;
+        -fx-vgap: 10px;
         
     }
     

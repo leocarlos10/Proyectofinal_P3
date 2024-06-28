@@ -35,7 +35,7 @@
                <content>
                   <FlowPane fx:id="flowpane" orientation="VERTICAL" prefHeight="333.0" prefWidth="797.0" style="-fx-background-color: #ECF0F1;" vgap="10.0">
                      <children>
-                        <FlowPane fx:id="flowpaneModelo" alignment="TOP_CENTER" prefHeight="80.0" prefWidth="790.0" styleClass="FlowpaneCaja" stylesheets="@style.css">
+                        <FlowPane fx:id="flowpaneModelo" alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="102.0" prefWidth="790.0" styleClass="flowpanebox" stylesheets="@style.css">
                            <children>
                               <HBox prefHeight="59.0" prefWidth="526.0" spacing="40.0">
                                  <children>
@@ -47,7 +47,7 @@
                                     <Label text="Estado" />
                                  </children>
                               </HBox>
-                              <HBox prefHeight="59.0" prefWidth="233.0" spacing="10.0">
+                              <HBox prefHeight="38.0" prefWidth="233.0" spacing="10.0">
                                  <children>
                                     <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" styleClass="buttons" stylesheets="@style.css" text="Agregar Venta" />
                                     <Button mnemonicParsing="false" styleClass="buttons" stylesheets="@style.css" text="Editar" />

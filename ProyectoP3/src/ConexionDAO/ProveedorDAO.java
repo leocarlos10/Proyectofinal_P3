@@ -45,7 +45,7 @@ public class ProveedorDAO implements DAO<Proveedor> {
     }
 
     @Override
-    public Proveedor read(String id) {
+    public Proveedor read(int id) {
 
         Proveedor proveedor = new Proveedor();
 

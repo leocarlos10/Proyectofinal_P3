@@ -76,6 +76,19 @@ public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema {
         
          return lista.getLista();
     }
+    
+    @Override
+    public Producto obtenerProducto(int id) {
+        conexion = new ConexionMySQL();
+        daoPro = new ProductoDAO(conexion.getConnection());
+        Producto pro = daoPro.read(id);
+        try {
+            conexion.cerrar();
+        } catch (SQLException ex) {
+            System.out.println("error al cerrar la conexion metodo obtener producto" + ex);
+        }
+        return pro;
+    }
 
     @Override
     public void RegistroPedido(
@@ -98,4 +111,33 @@ public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema {
         }
 
     }
+
+    @Override
+    public List<Pedido> ObtenerPedidos() {
+        
+         ListaPedidos lista = null;
+                
+        try {
+            // realizo la conexion
+            conexion = new ConexionMySQL();
+            
+            // instancio la clase que necesito para obtener todos los productos
+            daoPed = new PedidoDAO(conexion.getConnection());
+            
+            // instancio la lista que voy a utilizar para guardar los productos
+            lista = new ListaPedidos();
+            lista.setLista(daoPed.get());
+            
+            // cierro la conexion
+            conexion.cerrar();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FabricaEntidad_sistema2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         return lista.getLista();
+        
+    }
+
+   
 }

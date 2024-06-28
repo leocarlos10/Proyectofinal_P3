@@ -26,6 +26,8 @@ public interface FabricaEntidad_sistema {
    
    List<Producto> ObtenerProductos();
    
+   Producto obtenerProducto(int id);
+   
    
    // metodos para la entidad del sistema pedidos
    void RegistroPedido(
@@ -36,5 +38,7 @@ public interface FabricaEntidad_sistema {
             int id_producto,
             int id_cliente
    );
+   
+   List<Pedido> ObtenerPedidos();
     
 }

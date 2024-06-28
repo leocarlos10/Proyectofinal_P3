@@ -14,7 +14,11 @@ import modelo.Cliente;
  */
 public class ListaClientes {
     
-    List<Cliente> lista = new ArrayList<>();
+    List<Cliente> lista;
+    
+    public ListaClientes(){
+        lista = new ArrayList<>();
+    }
     
     
     public void agregarCliente(Cliente cli){
@@ -24,7 +28,4 @@ public class ListaClientes {
     public List<Cliente> getLista(){
        return lista;
     }
-    
-    
-    
 }
