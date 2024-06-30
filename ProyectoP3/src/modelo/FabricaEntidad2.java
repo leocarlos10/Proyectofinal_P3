@@ -62,6 +62,18 @@ public class FabricaEntidad2 implements FabricaEntidad{
         
         return cli;
     }
+    
+     @Override
+    public void UpdateCliente(Cliente cliente) {
+        try {
+            conexion = new ConexionMySQL();
+            DaoC = new ClienteDAO(conexion.getConnection());
+            DaoC.update(cliente);
+            conexion.cerrar();
+        } catch (SQLException ex) {
+            Logger.getLogger(FabricaEntidad2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     
     @Override
@@ -82,15 +94,9 @@ public class FabricaEntidad2 implements FabricaEntidad{
         } catch (SQLException ex) {
             Logger.getLogger(FabricaEntidad2.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("error "+ ex.getMessage());
-        }
-        
-        
-        
-        
+        } 
     }
 
    
-    
-    
 
 }

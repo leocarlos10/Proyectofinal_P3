@@ -86,7 +86,7 @@ public class ProveedorDAO implements DAO<Proveedor> {
                     + "documento = ? ,"
                     + "tipo_producto = ?,"
                     + "precio_producto = ?"
-                    + "WHERE = proveedor.id = ?";
+                    + "WHERE  proveedor.id = ?";
 
             statement = connection.prepareStatement(query);
 

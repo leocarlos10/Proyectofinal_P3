@@ -37,4 +37,6 @@ public interface FabricaEntidad {
             int precio_producto
     );
     
+    void UpdateCliente(Cliente cliente);
+    
 }

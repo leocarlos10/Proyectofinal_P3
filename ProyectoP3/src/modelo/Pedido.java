@@ -14,6 +14,7 @@ public class Pedido {
     LocalDate fecha;
     int id_producto;
     int id_cliente;
+    String estado;
 
     public Pedido(){}
 
@@ -79,5 +80,13 @@ public class Pedido {
 
     public void setId_cliente(int id_cliente) {
         this.id_cliente = id_cliente;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estdo) {
+        this.estado = estdo;
     }
 }

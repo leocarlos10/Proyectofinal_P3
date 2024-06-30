@@ -84,8 +84,9 @@ public class PedidoDAO implements DAO<Pedido> {
                 + "C_unidades = ?,"
                 + "fecha = ? ,"
                 + "id_producto = ?,"
-                + "id_cliente = ?"
-                + "WHERE = pedido.id = ?"
+                + "id_cliente = ?,"
+                + "estado = ? "
+                + "WHERE pedido.id = ?"
             ;
 
             statement = connection.prepareStatement(query);
@@ -96,13 +97,15 @@ public class PedidoDAO implements DAO<Pedido> {
             statement.setDate(4, java.sql.Date.valueOf(pedido.getFecha()));
             statement.setInt(5, pedido.getId_producto());
             statement.setInt(6, pedido.getId_cliente());
+            statement.setString(7, pedido.getEstado());
+            statement.setString(8, pedido.getId());
 
             statement.executeUpdate();
             statement.close();
 
 
         } catch (Exception e) {
-            System.out.println("Error al actualizar el producto ");
+            System.out.println("Error al actualizar el pedido "+e);
         }
     }
 
@@ -145,6 +148,7 @@ public class PedidoDAO implements DAO<Pedido> {
                 pedido.setFecha(resultSet.getDate("fecha").toLocalDate());
                 pedido.setId_producto(resultSet.getInt("id_producto"));
                 pedido.setId_cliente(resultSet.getInt("id_cliente"));
+                pedido.setEstado(resultSet.getString("estado"));
 
                 listaPedido.add(pedido);
             }

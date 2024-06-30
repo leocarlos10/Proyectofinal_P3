@@ -119,7 +119,7 @@ public class Pag_InventarioController implements Initializable {
         newVBox.setAlignment(Pos.TOP_CENTER);
         //dimensiones del VBox
         newVBox.setPrefWidth(249);
-        newVBox.setPrefHeight(241);
+        newVBox.setPrefHeight(245);
 
         // agregamos el nombre
         Label Lnombre = new Label(producto.getNombre());
@@ -315,18 +315,16 @@ public class Pag_InventarioController implements Initializable {
             } else if (Estado.equalsIgnoreCase("guardar")) {
                 producto.setPrecio(Integer.parseInt(Lprecio2.getText()));
                 producto.setCantidadUnidades(Integer.parseInt(LCantidad2.getText()));
-                conexion = new ConexionMySQL();
-                dao = new ProductoDAO(conexion.getConnection());
-                dao.update(producto);
-                cerrarConexion();
+                fabrica = new FabricaEntidad_sistema2();
+                fabrica.UpdateProducto(producto);
                 Editar.setText("Editar");
             }
         });
         
     }
     
-    public void mostrarInfoCompletaPro(Producto producto,TextField precio, TextField cantidad, TextField categoria){
-        
+    public void mostrarInfoCompletaPro(Producto producto, TextField precio, TextField cantidad, TextField categoria) {
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/Pag_Info_Producto.fxml"));
             Parent root = loader.load();
@@ -334,12 +332,11 @@ public class Pag_InventarioController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             Pag_Info_ProductoController controller = loader.getController();
-            controller.setProducto(producto,stage,precio,cantidad,categoria);
+            controller.setProducto(producto, stage, precio, cantidad, categoria);
             stage.show();
         } catch (IOException e) {
-            System.out.println("Error al cambiar la ventana" +e);
+            System.out.println("Error al cambiar la ventana info Producto" + e);
         }
-        
     }
 
     private boolean eliminarImagen_Producto(String nombreImagen) {

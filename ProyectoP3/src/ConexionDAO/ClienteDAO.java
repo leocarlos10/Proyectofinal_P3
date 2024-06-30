@@ -95,8 +95,8 @@ public class ClienteDAO implements DAO<Cliente> {
                     + "pais = ?,"
                     + "correo = ?,"
                     + "metodoPago = ?,"
-                    + "telefono = ?,"
-                    + "WHERE = cliente.id = ?";
+                    + "telefono = ?"
+                    + "WHERE cliente.id = ?";
 
             statement = connection.prepareStatement(query);
 
@@ -110,12 +110,13 @@ public class ClienteDAO implements DAO<Cliente> {
             statement.setString(8, cliente.getCorreo());
             statement.setString(9, cliente.getMetodoPago());
             statement.setString(10, cliente.getTelefono());
+            statement.setInt(11, cliente.getId());
 
             statement.executeUpdate();
             statement.close();
 
         } catch (Exception e) {
-            System.out.println("Error al actualizar el producto ");
+            System.out.println("Error al actualizar el cliente " + e);
         }
 
     }

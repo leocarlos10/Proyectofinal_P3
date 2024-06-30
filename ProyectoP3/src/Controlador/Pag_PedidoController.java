@@ -4,12 +4,16 @@
  */
 package Controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -18,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
 import modelo.FabricaEntidad;
@@ -134,12 +139,13 @@ public class Pag_PedidoController implements Initializable {
         Button btncliente = new Button(cliente.getNombre());
         Button btnproducto = new Button(producto.getNombre());
         //agregamos los eventos
-        evento_mostrarCliente(btncliente);
-        evento_mostrarProducto(btnproducto);
-        ComboBox estado = new ComboBox();
+        evento_mostrarCliente(btncliente,cliente);
+        evento_mostrarProducto(btnproducto,producto);
+        ComboBox<String> estado = new ComboBox();
+        evento_combo_estado(estado, pedido);
         // agregamos estilos a os buttons y a el comboBox
         setEstilosButton(btncliente, btnproducto);
-        setEstilosCombo(estado);
+        setEstilosCombo(estado,pedido);
         // agrego los elementos del combo
         estado.getItems().addAll("Pendiente","En Proceso","Enviado","Completado","Cancelado");
         
@@ -159,6 +165,8 @@ public class Pag_PedidoController implements Initializable {
         Button btnEditar = new Button("Editar");
         Button btnEliminar = new Button("Eliminar");
         setEstilosButton(btnAgregarV, btnEditar, btnEliminar);
+        // agregamos los eventos a los botones
+        evento_Eliminar_pedido(btnEliminar,Integer.parseInt(pedido.getId()));
         // agregamos los botones al layaoutbtn
         layoutbtn.getChildren().addAll(btnAgregarV,btnEditar,btnEliminar);
         
@@ -168,25 +176,83 @@ public class Pag_PedidoController implements Initializable {
         flowpane.getChildren().addAll(flowpanebox);
     }
     
-    public void evento_mostrarCliente(Button btncliente){
+    public void evento_mostrarCliente(Button btncliente,Cliente cliente){
         
         btncliente.setOnAction(event->{
-        
-            JOptionPane.showMessageDialog(null, "evento mostrar cliente");
+             try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/Pag_Info_Cliente.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                Pag_Info_ClienteController controller = loader.getController();
+                controller.setCliente(cliente, stage, btncliente);
+                stage.show();
+            } catch (IOException e) {
+                System.out.println("Error al cambiar la ventana info Producto" + e);
+            }
             
         });
         
     }
     
-     public void evento_mostrarProducto(Button btnproducto){
-        
-        btnproducto.setOnAction(event->{
-        
-             JOptionPane.showMessageDialog(null, "evento mostrar producto");
-            
+     public void evento_mostrarProducto(Button btnproducto, Producto producto) {
+
+        btnproducto.setOnAction(event -> {
+
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/Pag_Info_Producto.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                Pag_Info_ProductoController controller = loader.getController();
+                controller.setProducto(producto, stage);
+                stage.show();
+            } catch (IOException e) {
+                System.out.println("Error al cambiar la ventana info Producto" + e);
+            }
         });
-        
     }
+     
+     public void evento_combo_estado(ComboBox<String> estado, Pedido pedido){
+         
+         estado.setOnAction(Event -> {
+             
+             String selectEstado = estado.getValue();
+             pedido.setEstado(selectEstado);
+             fabricaES.UpdatePedido(pedido);
+         });
+         
+     }
+     
+      public void evento_Agregar_venta(Button btnAgregarventa){
+         
+         btnAgregarventa.setOnAction(event -> {
+             
+             
+         });
+         
+     }
+     
+      public void evento_Editar_pedido(Button btnEditar){
+         
+         btnEditar.setOnAction(event -> {
+             
+             
+         });
+         
+     }
+     
+     public void evento_Eliminar_pedido(Button btnEliminar,int id){
+         
+         btnEliminar.setOnAction(event -> {
+             fabricaES.DeletePedido(id);
+             cargarPedidos();
+             
+         });
+         
+     }
      
      public void setEstilosTextField(TextField text,TextField text2, TextField text3){
          
@@ -208,13 +274,16 @@ public class Pag_PedidoController implements Initializable {
          btn3.getStyleClass().add("buttons");
      }
      
-     public void setEstilosCombo(ComboBox combo){
-         
-         combo.setPromptText("Estado");
-         combo.getStyleClass().add("comboBox");
-     }
-    
-    
-    
-    
+    public void setEstilosCombo(ComboBox combo, Pedido pedido) {
+
+        if (pedido.getEstado() != null) {
+            combo.setPromptText(pedido.getEstado());
+            combo.getStyleClass().add("comboBox");
+
+        } else {
+            combo.setPromptText("Estado");
+            combo.getStyleClass().add("comboBox");
+        }
+
+    }
 }

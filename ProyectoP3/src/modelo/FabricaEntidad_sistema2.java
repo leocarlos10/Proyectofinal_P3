@@ -111,7 +111,20 @@ public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema {
         }
 
     }
-
+    
+    @Override
+    public void UpdateProducto(Producto producto) {
+        
+         try {
+            conexion = new ConexionMySQL();
+            daoPro = new ProductoDAO(conexion.getConnection());
+            daoPro.update(producto);
+            conexion.cerrar();
+        } catch (SQLException ex) {
+            Logger.getLogger(FabricaEntidad2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     @Override
     public List<Pedido> ObtenerPedidos() {
         
@@ -139,5 +152,28 @@ public class FabricaEntidad_sistema2 implements FabricaEntidad_sistema {
         
     }
 
-   
+    @Override
+    public void UpdatePedido(Pedido pedido) {
+        
+        try {
+            conexion = new ConexionMySQL();
+            daoPed = new PedidoDAO(conexion.getConnection());
+            daoPed.update(pedido);
+            conexion.cerrar();
+        } catch (SQLException ex) {
+            Logger.getLogger(FabricaEntidad_sistema2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void DeletePedido(int id) {
+        try {
+            conexion = new ConexionMySQL();
+            daoPed = new PedidoDAO(conexion.getConnection());
+            daoPed.delete(id);
+            conexion.cerrar();
+        } catch (SQLException ex) {
+            Logger.getLogger(FabricaEntidad_sistema2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

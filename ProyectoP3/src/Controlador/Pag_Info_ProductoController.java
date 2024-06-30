@@ -12,11 +12,10 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -47,6 +46,15 @@ public class Pag_Info_ProductoController implements Initializable {
         this.precio = precio;
         this.cantidad = cantidad;
         this.categoria = categoria;
+        btn_guardar_nueva_info.setVisible(true);
+        CargarInfo();
+    }
+    
+     public void setProducto(Producto producto,Stage stage){
+        
+        this.producto = producto;
+        this.stage = stage;
+        btn_guardar_nueva_info.setVisible(false);
         CargarInfo();
     }
 
@@ -70,6 +78,10 @@ public class Pag_Info_ProductoController implements Initializable {
 
     @FXML
     private TextField textnombre;
+    
+     @FXML
+    private Button btn_guardar_nueva_info;
+     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -125,8 +137,11 @@ public class Pag_Info_ProductoController implements Initializable {
     */
     
     public void ActualizarTextfieldInventario() {
-        precio.setText(String.valueOf(textPrecio.getText()));
-        cantidad.setText(textCantidadunidades.getText());
-        categoria.setText(textCategoria.getText());
+        
+        if (precio != null && cantidad != null && categoria != null) {
+            precio.setText(String.valueOf(textPrecio.getText()));
+            cantidad.setText(textCantidadunidades.getText());
+            categoria.setText(textCategoria.getText());
+        }
     }
 }

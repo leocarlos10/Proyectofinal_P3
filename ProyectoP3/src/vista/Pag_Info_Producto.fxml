@@ -45,7 +45,7 @@
                </padding>
             </VBox>
             <ImageView fx:id="imagen" fitHeight="169.0" fitWidth="219.0" layoutX="329.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="22.0" layoutY="439.0" mnemonicParsing="false" onAction="#event_updateProducto" prefHeight="25.0" prefWidth="124.0" styleClass="buttons" stylesheets="@style.css" text="Guardar nueva info" />
+            <Button fx:id="btn_guardar_nueva_info" layoutX="22.0" layoutY="439.0" mnemonicParsing="false" onAction="#event_updateProducto" prefHeight="25.0" prefWidth="124.0" styleClass="buttons" stylesheets="@style.css" text="Guardar nueva info" />
          </children>
       </Pane>
    </children>
