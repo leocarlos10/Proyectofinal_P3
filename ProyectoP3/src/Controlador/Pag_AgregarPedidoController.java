@@ -23,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import modelo.Cliente;
 import modelo.FabricaEntidad_sistema;
 import modelo.FabricaEntidad_sistema2;
 import modelo.FabricaEntidad;
@@ -143,13 +144,16 @@ public class Pag_AgregarPedidoController implements Initializable {
             FabricaEntidad fabricaE = new FabricaEntidad2();
             // antes de guardar el pedido y el cliente verificamos que el id sea diferente a 
             // a los id de los pedidos registrados en la DB
-            boolean estado = Verf_ID(input_id_pedido.getText());
+            boolean estadoPedido = Verf_ID(input_id_pedido.getText());
+            boolean estadoCliente = Verf_ID_cliente(Integer.parseInt(input_id_pedido.getText()));
             /*
             si estado = true -> encontro un id igual 
             si estado = false -> no encontro ningun id igual
             */
-            if (!estado) {
-                try {
+            if (!estadoPedido) {
+                
+                if(!estadoCliente){
+                     try {
 
                     // agrego el cliente con su id relacionado
                     fabricaE.RegistroCliente(
@@ -197,15 +201,25 @@ public class Pag_AgregarPedidoController implements Initializable {
                 conexion.cerrar();
 
                 stage.close();
+                }else{
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("SUGERENCIA");
+                    alerta.setContentText("Ya existe un Cliente registrado con este id por favor ingrese uno distinto");
+                    alerta.show();
+                    input_id_pedido.setText("");
+                    input_id_pedido.requestFocus();
+
+                }
+               
 
             }else{
                 Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                    alerta.setTitle("SUGERENCIA");
-                    alerta.setContentText("Ya existe un pedido registrado con este id por favor ingrese uno distinto");
-                    alerta.show();
-                    
-                    input_id_pedido.setText("");
-                    input_id_pedido.requestFocus();
+                alerta.setTitle("SUGERENCIA");
+                alerta.setContentText("Ya existe un pedido registrado con este id por favor ingrese uno distinto");
+                alerta.show();
+
+                input_id_pedido.setText("");
+                input_id_pedido.requestFocus();
                 
             }
 
@@ -218,6 +232,7 @@ public class Pag_AgregarPedidoController implements Initializable {
         
         boolean band=false;
         FabricaEntidad_sistema fabrica = new FabricaEntidad_sistema2();
+        
         List<Pedido> listaP = fabrica.ObtenerPedidos();
         
         for(Pedido i:listaP){
@@ -228,5 +243,22 @@ public class Pag_AgregarPedidoController implements Initializable {
             }
         }
         return band;
+    }
+    
+    public boolean Verf_ID_cliente(int id) {
+
+        boolean band = false;
+        FabricaEntidad fabrica2 = new FabricaEntidad2();
+        List<Cliente> listaC = fabrica2.getClientes();
+
+        for (Cliente i: listaC) {
+
+            if (i.getId() == id) {
+
+                band = true;
+            }
+        }
+        return band;
+
     }
 }

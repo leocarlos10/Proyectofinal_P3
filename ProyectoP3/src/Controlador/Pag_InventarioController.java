@@ -198,7 +198,7 @@ public class Pag_InventarioController implements Initializable {
         Button Eliminar = new Button("Eliminar ");
         Eliminar.getStyleClass().add("buttons");
         // agregamos el evento
-        EventoEliminarProducto(Eliminar);
+        EventoEliminarProducto(Eliminar,producto);
 
         Button Editar = new Button("Editar");
         Editar.getStyleClass().add("buttons");
@@ -251,7 +251,7 @@ public class Pag_InventarioController implements Initializable {
         
     }
     
-    public void EventoEliminarProducto( Button Eliminar){
+    public void EventoEliminarProducto( Button Eliminar, Producto producto){
         
         Eliminar.setOnAction(event -> {
             // realizamos la conexion 

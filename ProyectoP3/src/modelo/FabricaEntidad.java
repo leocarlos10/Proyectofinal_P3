@@ -28,6 +28,8 @@ public interface FabricaEntidad {
     
     Cliente obtenerCliente(int id);
     
+    List<Cliente> getClientes();
+    
     void RegsitroProveedor(
             String nombre,
             String direccion,

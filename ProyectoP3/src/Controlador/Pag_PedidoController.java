@@ -6,6 +6,7 @@ package Controlador;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -159,7 +161,7 @@ public class Pag_PedidoController implements Initializable {
         
         // por ultimo agregamos el HBOX para el layout de botones
         HBox layoutbtn = new HBox();
-        layoutbtn.setPrefSize(233, 59);
+        layoutbtn.setPrefSize(500, 59);
         layoutbtn.setSpacing(10);
         Button btnAgregarV = new Button("Agregar Venta");
         Button btnEditar = new Button("Editar");
@@ -167,6 +169,8 @@ public class Pag_PedidoController implements Initializable {
         setEstilosButton(btnAgregarV, btnEditar, btnEliminar);
         // agregamos los eventos a los botones
         evento_Eliminar_pedido(btnEliminar,Integer.parseInt(pedido.getId()));
+        evento_Editar_pedido(btnEditar, CantidadU, fecha, pedido);
+        evento_Agregar_venta(btnAgregarV);
         // agregamos los botones al layaoutbtn
         layoutbtn.getChildren().addAll(btnAgregarV,btnEditar,btnEliminar);
         
@@ -230,20 +234,43 @@ public class Pag_PedidoController implements Initializable {
          
          btnAgregarventa.setOnAction(event -> {
              
-             
+             // agregar la logica para guardar la venta en la base de datos.
+            
+             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+             alerta.setTitle("SUGERENCIA");
+             alerta.setContentText("La venta se a guardado correctamente !");
+             alerta.show();
          });
          
      }
      
-      public void evento_Editar_pedido(Button btnEditar){
-         
-         btnEditar.setOnAction(event -> {
-             
-             
-         });
-         
-     }
-     
+     public void evento_Editar_pedido(Button btnEditar, TextField cantidadU, TextField fecha, Pedido pedido) {
+
+        btnEditar.setOnAction(event -> {
+
+            String Estado = btnEditar.getText();
+            if (Estado.equalsIgnoreCase("editar")) {
+                cantidadU.setText("");
+                fecha.setText("");
+                btnEditar.setText("Guardar");
+            } else if (Estado.equalsIgnoreCase("guardar")) {
+
+                try {
+                    pedido.setC_unidades(Integer.parseInt(cantidadU.getText()));
+                    pedido.setFecha(LocalDate.parse(fecha.getText()));
+                    fabricaES = new FabricaEntidad_sistema2();
+                    fabricaES.UpdatePedido(pedido);
+                    btnEditar.setText("Editar");
+                } catch (Exception e) {
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("SUGERENCIA");
+                    alerta.setContentText("Por favor revise que la fecha este escrita correctamente año-mes-dia ");
+                    alerta.show();
+                }
+            }
+        });
+    }
+
      public void evento_Eliminar_pedido(Button btnEliminar,int id){
          
          btnEliminar.setOnAction(event -> {

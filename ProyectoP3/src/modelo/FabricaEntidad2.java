@@ -6,6 +6,7 @@ package modelo;
 
 import ConexionDAO.*;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -73,6 +74,21 @@ public class FabricaEntidad2 implements FabricaEntidad{
         } catch (SQLException ex) {
             Logger.getLogger(FabricaEntidad2.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    @Override
+    public List<Cliente> getClientes(){
+        
+        conexion = new ConexionMySQL();
+        DaoC = new ClienteDAO(conexion.getConnection());
+        List<Cliente> listC = DaoC.get();
+
+        try {
+            conexion.cerrar();
+        } catch (SQLException ex) {
+            Logger.getLogger(FabricaEntidad2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listC;
     }
 
     
